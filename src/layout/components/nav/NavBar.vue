@@ -5,24 +5,24 @@
             <section>
                 <h4 class="text-sm uppercase tracking-wider text-slate-200">Contact</h4>
                 <div class="mt-2 space-y-4 text-slate-200">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-phone"></i> +1 234 567 890</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-envelope"></i> info@transx.com</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot"></i> 1095 Columbus Ave</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-phone"></i> (210) 776-7411</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-envelope"></i> info@truckandtrailerstorage.com</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot"></i> 5169 Randolph Blvd, San Antonio, TX</div>
                 </div>
             </section>
             <section>
-                <h4 class="text-sm uppercase tracking-wider text-slate-200">Working hours</h4>
+                <h4 class="text-sm uppercase tracking-wider text-slate-200">Office Hours</h4>
                 <ul class="mt-2 text-slate-200 text-sm space-y-4">
-                    <li>Mon–Fri: 9:00–18:00</li>
-                    <li>Sat: 10:00–16:00</li>
+                    <li>Mon–Fri: 8:00 AM – 6:00 PM</li>
+                    <li>Sat: 8:00 AM – 2:00 PM</li>
                     <li>Sun: Closed</li>
                 </ul>
             </section>
             <div class="hidden md:flex items-center gap-2">
                 <RouterLink
-                    to="/quote"
+                    to="/contact"
                     class="inline-flex items-center gap-2 px-4 py-2 rounded bg-primary-600 hover:bg-primary-700 text-white font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600">
-                    Get a Quote
+                    Book a Storage
                 </RouterLink>
             </div>
         </LeftSidebar>
@@ -73,7 +73,7 @@ import NavBrand from './NavBrand.vue'
 import DesktopNav from './DesktopNav.vue'
 import MobileNav from './MobileNav.vue'
 import LeftSidebar from './LeftSidebar.vue'
-import { mainItems as mainItems0, services as services0, pages as pages0 } from '@/layout/components/nav/menuItems.js'
+import { mainItems as mainItems0, services as services0, pages as pages0 } from '@/const/menuItems.js'
 
 const mainItems = mainItems0
 const services = services0
