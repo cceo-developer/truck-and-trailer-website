@@ -27,7 +27,7 @@
                                     <div class="mt-6 flex gap-3">
                                         <RouterLink
                                             to="/"
-                                            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium"
+                                            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium"
                                         >
                                             Get a Quote
                                             <i class="fa-solid fa-arrow-right-long"></i>
@@ -52,13 +52,13 @@
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex items-end justify-between gap-6">
                     <div>
-                        <span class="block text-sm tracking-widest uppercase text-emerald-600">Services</span>
+                        <span class="block text-sm tracking-widest uppercase text-primary-600">Services</span>
                         <h3 class="text-2xl md:text-3xl font-bold">Transporterium Services</h3>
                         <p class="mt-2 text-slate-600 max-w-2xl">
                             Replicamos la sección de “Services” con tarjetas Tailwind. Después afinamos contenido, íconos e imágenes.
                         </p>
                     </div>
-                    <a href="#" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-emerald-600 hover:bg-emerald-50">
+                    <a href="#" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary-600 hover:bg-primary-50">
                         All services
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </a>
@@ -84,7 +84,7 @@
                     <p class="mt-3 text-slate-600">Texto placeholder. Luego lo reemplazamos por el copy del template.</p>
                 </div>
                 <div class="flex md:justify-end">
-                    <a href="#" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium">
+                    <a href="#" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium">
                         Contact us
                         <i class="fa-solid fa-paper-plane"></i>
                     </a>
