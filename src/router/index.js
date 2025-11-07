@@ -8,6 +8,7 @@ const Quote = () => import('@/views/Quote.vue');
 const StubPage = () => import('@/views/stub.vue');
 const LocationsList = () => import('@/components/locations/LocationsList.vue');
 const LocationDetail = () => import('@/components/locations/LocationDetail.vue');
+const About = () => import('@/views/About.vue');
 
 const NotFound = () => import('@/views/NotFound.vue');
 
@@ -30,7 +31,7 @@ export default createRouter({
         { path: '/locations/:terminalSlug', name: 'location-detail', component: LocationDetail, props: true, meta: { title: 'Terminal | TTS' } },
 
         // Pages institucionales
-        { path: '/about',          name: 'about',          component: StubPage, meta: { title: 'About TTS' } },
+        { path: '/about',          name: 'about',          component: About, meta: { title: 'About TTS' } },
         { path: '/why-choose-us',  name: 'why-choose-us',  component: StubPage, meta: { title: 'Why Choose Us | TTS' } },
         { path: '/gallery',        name: 'gallery',        component: StubPage, meta: { title: 'Gallery | TTS' } },
         { path: '/faq',            name: 'faq',            component: StubPage, meta: { title: 'FAQ | TTS' } },
