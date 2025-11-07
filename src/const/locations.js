@@ -72,7 +72,7 @@ export const LOCATIONS = [
                     '½ bathroom, multiple utility rooms',
                     'Central A/C & Heating, Opened Patio',
                 ],
-                image: '/assets/locations/zarzamora-bldg3b.jpg',
+                image: '/assets/truck/locations/zarzamora-bldg3b.jpg',
             },
             {
                 code: 'BLDG-4 · Open Shop',
@@ -83,7 +83,7 @@ export const LOCATIONS = [
                     'Overhead lighting',
                     'Exterior storage space',
                 ],
-                image: '/assets/locations/zarzamora-bldg4.png',
+                image: '/assets/truck/locations/zarzamora-bldg4.png',
             },
             {
                 code: 'BLDG-5 · Warehouse/Shop',
@@ -94,7 +94,7 @@ export const LOCATIONS = [
                     'Multiple 110V & 220V',
                     '(2) 14×14 bay doors, High ceilings',
                 ],
-                image: '/assets/locations/zarzamora-bldg5.png',
+                image: '/assets/truck/locations/zarzamora-bldg5.png',
             },
         ],
     },

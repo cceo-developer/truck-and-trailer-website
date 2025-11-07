@@ -13,7 +13,12 @@
                 >
                     <SwiperSlide v-for="(slide, i) in slides" :key="i">
                         <div class="relative h-full">
-                            <img :src="slide.src" :alt="slide.alt" class="absolute inset-0 w-full h-full object-cover" />
+                            <img
+                                :src="slide.src"
+                                :alt="slide.alt"
+                                class="absolute inset-0 w-full h-full object-cover"
+                                :class="slide.pos || 'object-center'"
+                            />
                             <div class="absolute inset-0 bg-black/40"></div>
                             <div class="relative h-full max-w-7xl mx-auto px-4 flex items-center">
                                 <div class="text-white max-w-2xl">
@@ -78,14 +83,20 @@
         <!-- CTA sencilla -->
         <section class="py-16 md:py-24 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
-                <h3 class="text-2xl md:text-3xl font-bold">Secure, flexible storage that scales with your fleet</h3>
-                <p class="mt-3 text-slate-600">
-                    24/7 surveillance and gated access, dedicated parking (no stacking delays), and optional maintenance to keep your assets ready.
-                </p>
-                <RouterLink to="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium">
-                    Contact us
-                    <i class="fa-solid fa-paper-plane"></i>
-                </RouterLink>
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-bold">Secure, flexible storage that scales with your fleet</h3>
+                    <p class="mt-3 text-slate-600">
+                        24/7 surveillance and gated access, dedicated parking (no stacking delays), and optional maintenance to keep your assets ready.
+                    </p>
+                </div>
+                <div class="md:text-right">
+                    <RouterLink
+                        to="/contact"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium">
+                        Contact us
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </RouterLink>
+                </div>
             </div>
         </section>
     </div>
@@ -100,9 +111,11 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-import promo1 from '@/assets/old/promo_1.jpg'
-import promo2 from '@/assets/old/promo_2.jpg'
-import promo3 from '@/assets/old/promo_3.jpg'
+import b3a from '@/assets/truck/locations/zarzamora-bldg3b.jpg'
+import b4  from '@/assets/truck/locations/zarzamora-bldg4.png'
+import b5  from '@/assets/truck/locations/zarzamora-bldg5.png'
+
+
 import ServiceCard from "@/components/widgets/ServiceCard.vue";
 import WhyChooseTTS from "@/components/home/WhyChooseTTS.vue";
 
@@ -111,34 +124,36 @@ const modules = [Navigation, Pagination, Autoplay]
 
 const slides = [
     {
-        src: promo1,
-        alt: 'Premium Storage in San Antonio',
+        src: b5,
+        alt: 'Warehouse 6,000 ft² – BLDG-5',
         title: 'Premium Truck & Trailer Storage in San Antonio, TX',
         subtitle: '4 terminals · 24/7 secured access · client-centric service',
+        pos: 'object-center',
     },
     {
-        src: promo2,
-        alt: 'Secure & Hassle-Free Access',
+        src: b4,
+        alt: 'Open Shop 1,250 ft² + yard – BLDG-4',
         title: 'Secure, Hassle-Free Access for Your Fleet',
-        subtitle: 'Gated access, surveillance, and dedicated parking. Get peace of mind.',
+        subtitle: 'Gated access, surveillance, and dedicated parking. Peace of mind.',
+        pos: 'object-center',
     },
     {
-        src: promo3,
-        alt: 'Tailored Solutions',
+        src: b3a,
+        alt: 'Suite A Offices – BLDG-3',
         title: 'Tailored Solutions for Transporters of All Sizes',
         subtitle: 'Short & long-term storage, private yards, office/warehouse options.',
+        pos: 'object-center',
     },
 ]
 
 const services = [
-    { title: 'Fleet Storage Solutions', desc: 'Short & long-term storage with daily, monthly & yearly rates.', icon: 'fa-solid fa-truck' },
-    { title: 'Private Yard Storage',    desc: 'Dedicated yard space for entire fleets at 4 convenient locations.', icon: 'fa-solid fa-warehouse' },
-    { title: 'Office & Warehouse',      desc: 'Flexible office and/or warehouse space available as needed.', icon: 'fa-solid fa-building' },
-    { title: 'Vehicle Maintenance',     desc: 'Regular checks: cleaning, battery charging, tire pressure & more.', icon: 'fa-solid fa-wrench' },
-    { title: '24/7 Secured Access',     desc: 'Gated access, surveillance cameras, secure fencing, on-site staff.', icon: 'fa-solid fa-shield-halved' },
-    { title: 'Dedicated Account Manager', desc: 'One point of contact to keep you updated on your assets.', icon: 'fa-solid fa-user-tie' },
+    { title: 'Fleet Storage Solutions', desc: 'Short & long-term...', icon: 'fa-solid fa-truck',        to: '/services/fleet-storage' },
+    { title: 'Private Yard Storage',    desc: 'Dedicated yard...',   icon: 'fa-solid fa-warehouse',    to: '/services/private-yard' },
+    { title: 'Office & Warehouse',      desc: 'Flexible office...',  icon: 'fa-solid fa-building',     to: '/services/office-space' },
+    { title: 'Vehicle Maintenance',     desc: 'Regular checks...',   icon: 'fa-solid fa-wrench',       to: '/services/maintenance' },
+    { title: '24/7 Secured Access',     desc: 'Gated access...',     icon: 'fa-solid fa-shield-halved',to: '/why-choose-us' },
+    { title: 'Dedicated Account Manager', desc: 'One point...',      icon: 'fa-solid fa-user-tie',     to: '/why-choose-us' },
 ]
-
 </script>
 
 <style scoped>
