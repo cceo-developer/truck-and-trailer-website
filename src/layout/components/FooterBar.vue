@@ -11,13 +11,10 @@
                             <ul class="space-y-3 text-slate-300">
                                 <li v-for="link in col" :key="link.label">
                                     <RouterLink
-                                        v-if="link.to" :to="link.to"
-                                        class="hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 rounded">
+                                        v-if="link.to" :to="link.to" class="hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 rounded">
                                         {{ link.label }}
                                     </RouterLink>
-                                    <a
-                                        v-else :href="link.href || '#'"
-                                        class="hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 rounded">
+                                    <a v-else :href="link.href || '#'" class="hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 rounded">
                                         {{ link.label }}
                                     </a>
                                 </li>
@@ -26,44 +23,53 @@
                     </div>
                 </section>
 
-                <!-- USA office -->
+                <!-- San Antonio HQ -->
                 <section class="md:col-span-4">
-                    <h3 class="text-2xl font-semibold">USA office</h3>
+                    <h3 class="text-2xl font-semibold">San Antonio HQ</h3>
                     <dl class="mt-6 space-y-4 text-slate-300">
                         <div>
                             <dt class="font-semibold text-slate-100">Location:</dt>
-                            <dd class="mt-1">San Antonio, Texas, USA</dd>
+                            <dd class="mt-1">
+                                4 Terminals · 24/7 Secured Access<br />
+                                <RouterLink to="/locations" class="underline hover:text-white">View all locations</RouterLink>
+                            </dd>
                         </div>
                         <div>
                             <dt class="font-semibold text-slate-100">Phone:</dt>
                             <dd class="mt-1">
-                                +31 85 964 47 25 &nbsp;&nbsp;&nbsp; +31 65 792 63 11
+                                (210) 776-7411
                             </dd>
                         </div>
                         <div>
                             <dt class="font-semibold text-slate-100">Email:</dt>
                             <dd class="mt-1">
-                                <a href="mailto:info@transx.com" class="hover:text-white">info@transx.com</a>
+                                <a href="mailto:info@truckandtrailerstorage.com" class="hover:text-white">info@truckandtrailerstorage.com</a>
                             </dd>
                         </div>
                         <div>
-                            <dt class="font-semibold text-slate-100">Openning hours:</dt>
-                            <dd class="mt-1">9:00 AM - 5:00 PM</dd>
+                            <dt class="font-semibold text-slate-100">Office Hours:</dt>
+                            <dd class="mt-1">
+                                Mon–Fri: 8:00 AM – 6:00 PM<br />
+                                Sat: 8:00 AM – 2:00 PM<br />
+                                Sun: Closed
+                            </dd>
                         </div>
                     </dl>
                 </section>
 
-                <!-- Logo + redes -->
                 <aside class="md:col-span-2 flex md:block items-start md:items-end justify-between md:justify-start">
                     <div class="flex items-center gap-3">
-                        <img src="@/assets/truck/logo-blanco.png" alt="Truck logo" class="h-9 w-auto" />
+                        <img src="@/assets/truck/logo-blanco.png" alt="TTS logo" class="h-9 w-auto" />
                     </div>
                     <ul class="mt-6 flex gap-4 md:justify-start">
                         <li v-for="s in social" :key="s.label">
                             <a
-                                :href="s.href" target="_blank" rel="noopener"
+                                :href="s.href"
+                                target="_blank"
+                                rel="noopener"
                                 class="inline-flex size-9 items-center justify-center rounded-full border border-slate-600 hover:border-slate-400 hover:text-white"
-                                :aria-label="s.label" title="">
+                                :aria-label="s.label"
+                                :title="s.label">
                                 <i :class="s.icon"></i>
                             </a>
                         </li>
@@ -74,14 +80,14 @@
             <!-- bottom row -->
             <div class="mt-12 border-t border-slate-700/70 pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <nav aria-label="Legal links" class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-400">
-                    <RouterLink to="/terms" class="hover:text-white">Terms and conditions</RouterLink>
+                    <RouterLink to="/terms" class="hover:text-white">Terms & Conditions</RouterLink>
                     <span class="hidden md:inline text-slate-600">|</span>
-                    <RouterLink to="/privacy" class="hover:text-white">Privacy policy</RouterLink>
+                    <RouterLink to="/privacy" class="hover:text-white">Privacy Policy</RouterLink>
                     <span class="hidden md:inline text-slate-600">|</span>
                     <RouterLink to="/cookies" class="hover:text-white">Cookies</RouterLink>
                 </nav>
                 <div class="text-sm text-slate-400">
-                    © {{ year }} Truck and Trailer. All rights reserved.
+                    © {{ year }} Truck & Trailer Storage (TTS). All rights reserved.
                 </div>
             </div>
         </div>
@@ -89,37 +95,44 @@
 </template>
 
 <script setup>
+const year = new Date().getFullYear()
 
-const year = new Date().getFullYear();
-
-// 3 columnas tipo template
-
+/**
+ * Discover: ajustado a las rutas reales de TTS
+ * - Quitamos Team, Careers, Pricing, Warehouse, Calculator, Elements, Sitemap
+ * - Enfocado en Services, Locations y páginas institucionales
+ */
 const discover = [
     [
-        { label: 'About us', to: '/about' },
-        { label: 'Team', to: '/team' },
-        { label: 'Careers', to: '/careers' },
-        { label: 'Services', to: '/services' },
-    ],
-    [
-        { label: 'Pricing plan', to: '/pricing' },
-        { label: 'Warehouse', to: '/warehouse' },
-        { label: 'Calculator', to: '/calculator' },
-        { label: 'Contact', to: '/contact' },
-    ],
-    [
-        { label: 'Elements', to: '/elements' },
-        { label: 'Contact', to: '/contact' },
-        { label: 'Site map', to: '/sitemap' },
+        { label: 'Home', to: '/' },
+        { label: 'About TTS', to: '/about' },
+        { label: 'Why Choose Us', to: '/why-choose-us' },
         { label: 'FAQ', to: '/faq' },
+    ],
+    [
+        { label: 'Services', to: '/services' },
+        { label: 'Fleet Storage Solutions', to: '/services/fleet-storage' },
+        { label: 'Private Yard Storage', to: '/services/private-yard' },
+        { label: 'Vehicle Maintenance', to: '/services/maintenance' },
+    ],
+    [
+        { label: 'Locations', to: '/locations' },
+        // Si más adelante manejas slugs, puedes enlazar directo a cada terminal
+        // { label: 'Terminal 1 – Randolph Blvd', to: '/locations/t1' },
+        // { label: 'Terminal 2 – Sherri Ann Rd', to: '/locations/t2' },
+        // { label: 'Terminal 3 – S. Zarzamora', to: '/locations/t3' },
+        // { label: 'Terminal 4 – Randolph Blvd', to: '/locations/t4' },
+        { label: 'Gallery', to: '/gallery' },
+        { label: 'Contact', to: '/contact' },
+        { label: 'Get a Quote', to: '/quote' },
     ],
 ]
 
-// redes (Font Awesome brands)
+// Redes (placeholders hasta tener URLs definitivas)
 const social = [
     { label: 'YouTube', icon: 'fa-brands fa-youtube', href: '#' },
     { label: 'Facebook', icon: 'fa-brands fa-facebook-f', href: '#' },
-    { label: 'Twitter', icon: 'fa-brands fa-x-twitter', href: '#' },
+    { label: 'X (Twitter)', icon: 'fa-brands fa-x-twitter', href: '#' },
     { label: 'LinkedIn', icon: 'fa-brands fa-linkedin-in', href: '#' },
     { label: 'Instagram', icon: 'fa-brands fa-instagram', href: '#' },
 ]

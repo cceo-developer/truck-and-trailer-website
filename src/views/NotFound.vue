@@ -1,11 +1,12 @@
 <template>
-    <h1>Blog</h1>
+    <h1>
+       Page not found
+    </h1>
 </template>
 
 <script setup>
 
 </script>
-
 
 <style scoped>
 
