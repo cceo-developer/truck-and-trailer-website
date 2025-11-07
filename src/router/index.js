@@ -9,6 +9,7 @@ const StubPage = () => import('@/views/stub.vue');
 const LocationsList = () => import('@/components/locations/LocationsList.vue');
 const LocationDetail = () => import('@/components/locations/LocationDetail.vue');
 const About = () => import('@/views/About.vue');
+const WhyChooseUs = () => import('@/views/WhyChooseUs.vue');
 
 const NotFound = () => import('@/views/NotFound.vue');
 
@@ -32,7 +33,7 @@ export default createRouter({
 
         // Pages institucionales
         { path: '/about',          name: 'about',          component: About, meta: { title: 'About TTS' } },
-        { path: '/why-choose-us',  name: 'why-choose-us',  component: StubPage, meta: { title: 'Why Choose Us | TTS' } },
+        { path: '/why-choose-us',  name: 'why-choose-us',  component: WhyChooseUs, meta: { title: 'Why Choose Us | TTS' } },
         { path: '/gallery',        name: 'gallery',        component: StubPage, meta: { title: 'Gallery | TTS' } },
         { path: '/faq',            name: 'faq',            component: StubPage, meta: { title: 'FAQ | TTS' } },
 
