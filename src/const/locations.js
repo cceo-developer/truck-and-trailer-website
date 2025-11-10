@@ -6,8 +6,11 @@ export const OFFICE_HOURS = [
 
 export const CONTACT = {
     phone: '(210) 776-7411',
-    email: 'info@truckandtrailerstorage.com',
-};
+    email: 'Info@TruckandTrailerStorage.com',
+    address: '12815 S. Zarzamora St. San Antonio, TX 78224',
+    directionsUrl: 'https://maps.google.com/?q=12815 S. Zarzamora St. San Antonio, TX 78224',
+    mapEmbed: 'https://www.google.com/maps/embed?...' // opcional
+}
 
 export const COMMON_FEATURES = [
     '24/7 secured access',
