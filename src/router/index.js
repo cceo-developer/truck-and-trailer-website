@@ -10,6 +10,7 @@ const LocationsList = () => import('@/components/locations/LocationsList.vue');
 const LocationDetail = () => import('@/components/locations/LocationDetail.vue');
 const About = () => import('@/views/About.vue');
 const WhyChooseUs = () => import('@/views/WhyChooseUs.vue');
+const Contact = () => import('@/views/Contact.vue');
 
 const NotFound = () => import('@/views/NotFound.vue');
 
@@ -38,7 +39,7 @@ export default createRouter({
         { path: '/faq',            name: 'faq',            component: StubPage, meta: { title: 'FAQ | TTS' } },
 
         // Contact & Quote
-        { path: '/contact',  name: 'contact',  component: StubPage, meta: { title: 'Contact | TTS' } },
+        { path: '/contact',  name: 'contact',  component: Contact, meta: { title: 'Contact | TTS' } },
         { path: '/quote',    name: 'quote',    component: Quote,     meta: { title: 'Get a Quote | TTS' } },
 
         // --- Redirecciones desde rutas antiguas (no rompas enlaces existentes) ---
