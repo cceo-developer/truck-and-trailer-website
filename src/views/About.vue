@@ -17,7 +17,7 @@
                     <div class="mt-6 flex flex-wrap gap-3">
                         <RouterLink
                             to="/quote"
-                            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium">
+                            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-medium">
                             Get a Quote
                             <i class="fa-solid fa-arrow-right-long"></i>
                         </RouterLink>
@@ -45,7 +45,7 @@
         <section class="py-16 md:py-24">
             <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-10">
                 <div class="md:col-span-5">
-                    <span class="block text-sm tracking-widest uppercase text-primary-600">Our Mission & Values</span>
+                    <span class="block text-sm tracking-widest uppercase text-primary-500">Our Mission & Values</span>
                     <h2 class="mt-2 text-2xl md:text-3xl font-bold">
                         Built around your needs, since 2014
                     </h2>
@@ -58,7 +58,7 @@
 
                 <div class="md:col-span-7 grid sm:grid-cols-2 gap-6">
                     <article class="rounded-xl border border-slate-200 p-6 bg-white">
-                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-700 flex items-center justify-center">
+                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center">
                             <i class="fa-solid fa-user-check"></i>
                         </div>
                         <h3 class="mt-4 font-semibold">Client-Centric</h3>
@@ -68,7 +68,7 @@
                     </article>
 
                     <article class="rounded-xl border border-slate-200 p-6 bg-white">
-                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-700 flex items-center justify-center">
+                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center">
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
                         <h3 class="mt-4 font-semibold">Security First</h3>
@@ -78,7 +78,7 @@
                     </article>
 
                     <article class="rounded-xl border border-slate-200 p-6 bg-white">
-                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-700 flex items-center justify-center">
+                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center">
                             <i class="fa-solid fa-map-location-dot"></i>
                         </div>
                         <h3 class="mt-4 font-semibold">Strategic Locations</h3>
@@ -88,7 +88,7 @@
                     </article>
 
                     <article class="rounded-xl border border-slate-200 p-6 bg-white">
-                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-700 flex items-center justify-center">
+                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center">
                             <i class="fa-solid fa-handshake"></i>
                         </div>
                         <h3 class="mt-4 font-semibold">Flexible Terms</h3>
@@ -104,7 +104,7 @@
         <section class="py-16 md:py-24 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4">
                 <header class="max-w-3xl">
-                    <span class="block text-sm tracking-widest uppercase text-primary-600">What We Do</span>
+                    <span class="block text-sm tracking-widest uppercase text-primary-500">What We Do</span>
                     <h2 class="mt-2 text-2xl md:text-3xl font-bold">Storage & Support for Your Fleet</h2>
                     <p class="mt-3 text-slate-600">
                         From day-to-day storage to value-added maintenance, we help you operate efficiently and safely.
@@ -113,7 +113,7 @@
 
                 <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <article class="rounded-xl border border-slate-200 bg-white p-6">
-                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-700 flex items-center justify-center">
+                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center">
                             <i class="fa-solid fa-truck"></i>
                         </div>
                         <h3 class="mt-4 font-semibold">Fleet Storage</h3>
@@ -123,7 +123,7 @@
                     </article>
 
                     <article class="rounded-xl border border-slate-200 bg-white p-6">
-                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-700 flex items-center justify-center">
+                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center">
                             <i class="fa-solid fa-warehouse"></i>
                         </div>
                         <h3 class="mt-4 font-semibold">Private Yards</h3>
@@ -133,7 +133,7 @@
                     </article>
 
                     <article class="rounded-xl border border-slate-200 bg-white p-6">
-                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-700 flex items-center justify-center">
+                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center">
                             <i class="fa-solid fa-building"></i>
                         </div>
                         <h3 class="mt-4 font-semibold">Office & Warehouse</h3>
@@ -143,7 +143,7 @@
                     </article>
 
                     <article class="rounded-xl border border-slate-200 bg-white p-6">
-                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-700 flex items-center justify-center">
+                        <div class="h-11 w-11 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center">
                             <i class="fa-solid fa-screwdriver-wrench"></i>
                         </div>
                         <h3 class="mt-4 font-semibold">Vehicle Maintenance</h3>
@@ -156,7 +156,7 @@
                 <div class="mt-8">
                     <RouterLink
                         to="/services"
-                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-primary-600 text-primary-700 hover:bg-primary-50 font-medium">
+                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-primary-500 text-primary-600 hover:bg-primary-50 font-medium">
                         Explore Services
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </RouterLink>
@@ -168,7 +168,7 @@
         <section class="py-16 md:py-24">
             <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-1">
-                    <span class="block text-sm tracking-widest uppercase text-primary-600">Locations</span>
+                    <span class="block text-sm tracking-widest uppercase text-primary-500">Locations</span>
                     <h2 class="mt-2 text-2xl md:text-3xl font-bold">Four Dedicated Terminals</h2>
                     <p class="mt-3 text-slate-600">
                         5169 & 5246 Randolph Blvd · 5126 Sherri Ann Rd · 12815 S. Zarzamora St — all with 24/7 secured access.
@@ -182,7 +182,7 @@
 
                     <RouterLink
                         to="/locations"
-                        class="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-primary-600 text-primary-700 hover:bg-primary-50 font-medium">
+                        class="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-primary-500 text-primary-600 hover:bg-primary-50 font-medium">
                         View All Locations
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </RouterLink>
@@ -209,7 +209,7 @@
                 <div class="flex gap-3">
                     <RouterLink
                         to="/quote"
-                        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium">
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-medium">
                         Get a Quote
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </RouterLink>

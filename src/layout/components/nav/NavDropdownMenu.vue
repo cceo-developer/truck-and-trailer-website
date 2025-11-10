@@ -2,7 +2,7 @@
     <div class="relative" data-dd ref="triggerRef">
         <button
             class="inline-flex items-center gap-1 px-2 py-1 rounded-md hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
-            :class="active ? 'text-primary-700 font-semibold' : 'text-slate-700'"
+            :class="active ? 'text-primary-500 font-semibold' : 'text-slate-700'"
             :aria-expanded="open ? 'true' : 'false'" aria-haspopup="true"
             @mouseenter="emit('open')" @mouseleave="scheduleClose" @focus="emit('open')">
             <slot name="label" />

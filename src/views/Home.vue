@@ -30,7 +30,7 @@
                                         {{ slide.subtitle }}
                                     </p>
                                     <div class="mt-6 flex gap-3">
-                                        <RouterLink to="/quote" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium">
+                                        <RouterLink to="/quote" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-medium">
                                             Get a Quote
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </RouterLink>
@@ -54,13 +54,13 @@
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex items-end justify-between gap-6">
                     <div>
-                        <span class="block text-sm tracking-widest uppercase text-primary-600">Services</span>
+                        <span class="block text-sm tracking-widest uppercase text-primary-500">Services</span>
                         <h3 class="text-2xl md:text-3xl font-bold">Premium Fleet Storage & Support</h3>
                         <p class="mt-2 text-slate-600 max-w-2xl">
                             We securely store, support, and protect medium-to-heavy duty equipment with flexible short & long-term options.
                         </p>
                     </div>
-                    <RouterLink to="/services" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary-600 hover:bg-primary-50">
+                    <RouterLink to="/services" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary-500 hover:bg-primary-50">
                         All services
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </RouterLink>
@@ -92,7 +92,7 @@
                 <div class="md:text-right">
                     <RouterLink
                         to="/contact"
-                        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium">
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-medium">
                         Contact us
                         <i class="fa-solid fa-paper-plane"></i>
                     </RouterLink>

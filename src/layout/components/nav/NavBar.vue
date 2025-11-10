@@ -21,7 +21,7 @@
             <div class="hidden md:flex items-center gap-2">
                 <RouterLink
                     to="/contact"
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded bg-primary-600 hover:bg-primary-700 text-white font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600">
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded bg-primary-500 hover:bg-primary-6 00 text-white font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600">
                     Book a Storage
                 </RouterLink>
             </div>
@@ -31,7 +31,7 @@
             <div class="mx-auto max-w-7xl">
                 <div class="flex items-center justify-between h-16">
                     <button
-                        class="inline-flex items-center justify-center size-14 rounded-xl hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary-600"
+                        class="inline-flex items-center justify-center size-14 rounded-xl hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary-500"
                         @click="toggleSidebar" ref="sidebarBtnRef" aria-label="Abrir panel lateral">
                         <i class="fa-solid fa-bars-staggered text-2xl"></i>
                     </button>
@@ -43,13 +43,13 @@
                     <div class="hidden md:flex items-center gap-2">
                         <RouterLink
                             to="/quote"
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded bg-primary-600 hover:bg-primary-700 text-white font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600">
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded bg-primary-500 hover:bg-primary-600 text-white font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                             Get a Quote
                         </RouterLink>
                     </div>
 
                     <button
-                        class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-slate-200 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary-600"
+                        class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-slate-200 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary-500"
                         @click="toggleMobile"
                         :aria-expanded="openMobile ? 'true' : 'false'" aria-controls="mobile-menu"
                         :aria-label="openMobile ? 'Cerrar menú' : 'Abrir menú'" ref="mobileBtnRef">
