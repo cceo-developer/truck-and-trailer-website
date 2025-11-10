@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-7xl mx-auto px-4 py-12">
         <header class="max-w-3xl">
-            <span class="block text-sm tracking-widest uppercase text-primary-600">Locations</span>
+            <span class="block text-sm tracking-widest uppercase text-primary-500">Locations</span>
             <h1 class="text-3xl md:text-4xl font-bold mt-2">Four secure terminals across San Antonio</h1>
             <p class="text-slate-600 mt-3">
                 24/7 secured access, surveillance and gated facilities. Pick the terminal that best fits your routes.
@@ -27,7 +27,7 @@
                     </ul>
                     <RouterLink
                         :to="`/locations/${loc.slug}`"
-                        class="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary-600 text-primary-700 hover:bg-primary-50"
+                        class="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary-500 text-primary-600 hover:bg-primary-50"
                     >
                         View details
                         <i class="fa-solid fa-arrow-right-long"></i>
@@ -53,8 +53,7 @@
                 </ul>
                 <RouterLink
                     to="/quote"
-                    class="md:justify-self-end inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium"
-                >
+                    class="md:justify-self-end inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-medium">
                     Get a Quote
                     <i class="fa-solid fa-arrow-right-long"></i>
                 </RouterLink>

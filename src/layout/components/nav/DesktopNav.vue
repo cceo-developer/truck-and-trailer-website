@@ -19,11 +19,11 @@
                     class="group rounded-xl p-3 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none"
                 >
                     <div class="flex items-start gap-3">
-                        <div class="h-10 w-10 rounded-lg bg-primary-50 flex items-center justify-center text-primary-700">
+                        <div class="h-10 w-10 rounded-lg bg-primary-50 flex items-center justify-center text-primary-500">
                             <i :class="it.icon"></i>
                         </div>
                         <div>
-                            <div class="font-semibold group-hover:text-primary-700">{{ it.label }}</div>
+                            <div class="font-semibold group-hover:text-primary-500">{{ it.label }}</div>
                             <div class="text-sm text-slate-600">{{ it.desc }}</div>
                         </div>
                     </div>
@@ -76,8 +76,8 @@ const route = useRoute();
 const isActive = (path) => (path === '/' ? route.path === '/' : route.path.startsWith(path));
 
 const linkClass = (path) => {
-    const base = 'px-2 py-1 rounded-md transition hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary-500'
-    return isActive(path) ? `text-primary-700 font-semibold ${base}` : `text-slate-700 ${base}`
+    const base = 'px-2 py-1 rounded-md transition focus:outline-none focus:ring-2 focus:ring-primary-500'
+    return isActive(path) ? `text-primary-500 font-semibold ${base}` : `text-slate-700 hover:bg-primary-100 ${base}`
 }
 
 const hasServices = computed(() => props.services?.length)
