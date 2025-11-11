@@ -4,8 +4,6 @@ const Home = () => import('@/views/Home.vue');
 const Services = () => import('@/views/Services.vue');
 const Quote = () => import('@/views/Quote.vue');
 
-
-const StubPage = () => import('@/views/stub.vue');
 const LocationsList = () => import('@/components/locations/LocationsList.vue');
 const LocationDetail = () => import('@/components/locations/LocationDetail.vue');
 const About = () => import('@/views/About.vue');
@@ -47,27 +45,6 @@ export default createRouter({
         // Contact & Quote
         { path: '/contact',  name: 'contact',  component: Contact, meta: { title: 'Contact | TTS' } },
         { path: '/quote',    name: 'quote',    component: Quote,     meta: { title: 'Get a Quote | TTS' } },
-
-        // --- Redirecciones desde rutas antiguas (no rompas enlaces existentes) ---
-        // Antiguos "services" genéricos
-        { path: '/services/road', name: 'legacy-services-road', redirect: { name: 'services-fleet-storage' } },
-        { path: '/services/air',  name: 'legacy-services-air',  redirect: { name: 'services-fleet-storage' } },
-        { path: '/services/sea',  name: 'legacy-services-sea',  redirect: { name: 'services-fleet-storage' } },
-        { path: '/services/wh',   name: 'legacy-services-wh',   redirect: { name: 'services-office-space' } },
-        { path: '/services/proj', name: 'legacy-services-proj', redirect: { name: 'services-private-yard' } },
-        { path: '/services/cust', name: 'legacy-services-cust', redirect: { name: 'services' } },
-
-        // Viejas secciones
-        { path: '/pages',        name: 'legacy-pages',       redirect: { name: 'about' } },
-        { path: '/pages/about',  name: 'legacy-pages-about', redirect: { name: 'about' } },
-        { path: '/pages/team',   name: 'legacy-pages-team',  redirect: { name: 'about' } },
-        { path: '/pages/pricing',name: 'legacy-pages-pricing', redirect: { name: 'why-choose-us' } },
-        { path: '/pages/careers',name: 'legacy-pages-careers', redirect: { name: 'about' } },
-        { path: '/pages/faq',    name: 'legacy-pages-faq',   redirect: { name: 'faq' } },
-
-        // Blog/Shop ya no existen en TTS
-        { path: '/blog', name: 'legacy-blog', redirect: '/' },
-        { path: '/shop', name: 'legacy-shop', redirect: '/' },
 
         // Contacts -> Contact
         { path: '/contacts', name: 'legacy-contacts', redirect: { name: 'contact' } },

@@ -13,7 +13,6 @@
                 <template #label>
                     <RouterLink
                         to="/services"
-                        class="px-2 py-1 rounded-md transition"
                         @click.stop>
                         Services
                     </RouterLink>
