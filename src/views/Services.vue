@@ -50,8 +50,8 @@
                 </header>
 
                 <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <a
-                        v-for="svc in overview" :key="svc.id" :href="`#${svc.id}`"
+                    <RouterLink
+                        v-for="svc in overview" :key="svc.id" :to="mode === 'route' ? {name: svc.routeName} :{ hash: `#${svc.id}`} "
                         class="rounded-2xl border border-slate-200 p-6 hover:shadow-sm transition bg-white">
                         <div class="size-12 rounded-2xl bg-primary-50 flex items-center justify-center text-primary-700">
                             <i :class="svc.icon"></i>
@@ -62,7 +62,7 @@
                             Learn more
                             <i class="fa-solid fa-arrow-right-long"></i>
                         </span>
-                    </a>
+                    </RouterLink>
                 </div>
             </div>
         </section>
@@ -239,18 +239,51 @@ const imgYard  = ref('') // yardImg || ''
 const imgOffice= ref('') // officeImg || ''
 const imgMaint = ref('') // maintImg || ''
 
+const mode = ref('route');
+
 const overview = [
-    { id: 'fleet-storage',  title: 'Fleet Storage',       desc: 'Secure, flexible storage for trucks, trailers & equipment.', icon: 'fa-solid fa-truck' },
-    { id: 'private-yard',   title: 'Private Yard Storage',desc: 'Dedicated yard areas for entire fleets at 4 terminals.',     icon: 'fa-solid fa-warehouse' },
-    { id: 'office-space',   title: 'Office & Warehouse',  desc: 'Flexible suites and open shop/warehouse options.',         icon: 'fa-solid fa-building' },
-    { id: 'maintenance',    title: 'Vehicle Maintenance', desc: 'On-demand checks to keep your assets ready.',               icon: 'fa-solid fa-screwdriver-wrench' },
+    {
+        id: 'fleet-storage',
+        title: 'Fleet Storage',
+        desc: 'Secure, flexible storage for trucks, trailers & equipment.',
+        icon: 'fa-solid fa-truck',
+        routeName: 'services-fleet-storage',
+    },
+    {
+        id: 'private-yard',
+        title: 'Private Yard Storage',
+        desc: 'Dedicated yard areas for entire fleets at 4 terminals.',
+        icon: 'fa-solid fa-warehouse',
+        routeName: 'services-private-yard',
+    },
+    {
+        id: 'office-space',
+        title: 'Office & Warehouse',
+        desc: 'Flexible suites and open shop/warehouse options.',
+        icon: 'fa-solid fa-building',
+        routeName: 'services-office-space',
+    },
+    {
+        id: 'maintenance',
+        title: 'Vehicle Maintenance',
+        desc: 'On-demand checks to keep your assets ready.',
+        icon: 'fa-solid fa-screwdriver-wrench',
+        routeName: 'services-maintenance',
+    },
 ]
 
 onMounted(() => {
     document.title = 'Services | Truck & Trailer Storage'
+    const meta = document.querySelector('meta[name="description"]') || document.createElement('meta')
+    meta.name = 'description';
+    meta.content = 'Secure fleet storage in San Antonio: private yards, office/warehouse rentals, and light maintenance. 24/7 access across multiple terminals.'
+    if (!meta.parentNode) document.head.appendChild(meta);
 })
 </script>
 
 <style scoped>
+html {
+    scroll-behavior: smooth;
+}
 
 </style>
