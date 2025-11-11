@@ -10,7 +10,14 @@
                 :open="openDd === 'services'" :active="isActive('/services')"
                 class="rounded-md text-slate-700 hover:bg-primary-100"
                 @open="openDd = 'services'" @close="openDd = null">
-                <template #label>Services</template>
+                <template #label>
+                    <RouterLink
+                        to="/services"
+                        class="px-2 py-1 rounded-md transition"
+                        @click.stop>
+                        Services
+                    </RouterLink>
+                </template>
                 <RouterLink
                     v-for="it in services"
                     :key="it.to"
@@ -36,7 +43,9 @@
                 class="rounded-md text-slate-700 hover:bg-primary-100"
                 gridClass="grid grid-cols-3 gap-3"
                 @open="openDd = 'pages'" @close="openDd = null">
-                <template #label>Pages</template>
+                <template #label>
+                    Pages
+                </template>
                 <RouterLink
                     v-for="pg in pages"
                     :key="pg.to"

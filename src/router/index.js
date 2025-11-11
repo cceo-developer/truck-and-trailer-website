@@ -13,6 +13,12 @@ const WhyChooseUs = () => import('@/views/WhyChooseUs.vue');
 const Contact = () => import('@/views/Contact.vue');
 const FAQ = () => import('@/views/FAQ.vue');
 
+//Services
+const FleetStorage = () => import('@/components/services/FleetStorageSolutions.vue');
+const PrivateYardStorage = () => import('@/components/services/PrivateYardStorage.vue');
+const OfficeSpace = () => import('@/components/services/OfficeSpace.vue');
+const Maintenance = () => import('@/components/services/Maintenance.vue');
+
 const NotFound = () => import('@/views/NotFound.vue');
 
 export default createRouter({
@@ -23,10 +29,10 @@ export default createRouter({
 
         // Services (página índice + subrutas reales de TTS)
         { path: '/services', name: 'services', component: Services, meta: { title: 'Services | TTS' } },
-        { path: '/services/fleet-storage', name: 'services-fleet-storage', component: StubPage, meta: { title: 'Fleet Storage Solutions | TTS' } },
-        { path: '/services/private-yard',  name: 'services-private-yard',  component: StubPage, meta: { title: 'Private Yard Storage | TTS' } },
-        { path: '/services/office-space',  name: 'services-office-space',  component: StubPage, meta: { title: 'Office & Warehouse Rentals | TTS' } },
-        { path: '/services/maintenance',   name: 'services-maintenance',   component: StubPage, meta: { title: 'Vehicle Maintenance | TTS' } },
+        { path: '/services/fleet-storage', name: 'services-fleet-storage', component: FleetStorage, meta: { title: 'Fleet Storage Solutions | TTS' } },
+        { path: '/services/private-yard',  name: 'services-private-yard',  component: PrivateYardStorage, meta: { title: 'Private Yard Storage | TTS' } },
+        { path: '/services/office-space',  name: 'services-office-space',  component: OfficeSpace, meta: { title: 'Office & Warehouse Rentals | TTS' } },
+        { path: '/services/maintenance',   name: 'services-maintenance',   component: Maintenance, meta: { title: 'Vehicle Maintenance | TTS' } },
 
         // Locations (lista + detalle de terminal dinámico)
         { path: '/locations', name: 'locations', component: LocationsList, meta: { title: 'Locations | TTS' } },

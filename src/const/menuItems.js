@@ -16,7 +16,6 @@ export const services = [
 export const pages = [
     { label: 'About TTS', desc: 'Our Mission & Values', to: '/about' },
     { label: 'Why Choose Us', desc: 'Security, convenience, and support', to: '/why-choose-us' },
-    { label: 'Gallery', desc: 'Our facilities & locations', to: '/gallery' },
     { label: 'FAQs', desc: 'Common questions answered', to: '/faq' },
     { label: 'Contact', desc: 'Get in touch with us', to: '/contact' },
 ]
