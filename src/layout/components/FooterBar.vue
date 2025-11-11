@@ -117,14 +117,7 @@ const discover = [
     ],
     [
         { label: 'Locations', to: '/locations' },
-        // Si más adelante manejas slugs, puedes enlazar directo a cada terminal
-        // { label: 'Terminal 1 – Randolph Blvd', to: '/locations/t1' },
-        // { label: 'Terminal 2 – Sherri Ann Rd', to: '/locations/t2' },
-        // { label: 'Terminal 3 – S. Zarzamora', to: '/locations/t3' },
-        // { label: 'Terminal 4 – Randolph Blvd', to: '/locations/t4' },
-        { label: 'Gallery', to: '/gallery' },
         { label: 'Contact', to: '/contact' },
-        { label: 'Get a Quote', to: '/quote' },
     ],
 ]
 
