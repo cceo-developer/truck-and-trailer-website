@@ -31,7 +31,7 @@
             <div class="mx-auto max-w-7xl">
                 <div class="flex items-center justify-between h-16">
                     <button
-                        class="inline-flex items-center justify-center size-14 rounded-xl hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                        class="inline-flex items-center justify-center size-14 rounded-xl hover:bg-slate-50 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500"
                         @click="toggleSidebar" ref="sidebarBtnRef" aria-label="Abrir panel lateral">
                         <i class="fa-solid fa-bars-staggered text-2xl"></i>
                     </button>
