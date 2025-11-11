@@ -1,10 +1,12 @@
 <template>
     <div class="relative" data-dd ref="triggerRef">
         <button
-            class="inline-flex items-center gap-1 px-2 py-1 rounded-md hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
+            class="inline-flex items-center cursor-pointer gap-1 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
             :class="active ? 'text-primary-500 font-semibold' : 'text-slate-700'"
             :aria-expanded="open ? 'true' : 'false'" aria-haspopup="true"
-            @mouseenter="emit('open')" @mouseleave="scheduleClose" @focus="emit('open')">
+            @pointerenter="cancelClose(); emit('open')"
+            @pointerleave="scheduleClose" @blur="scheduleClose"
+            @focus="cancelClose(); emit('open')">
             <slot name="label" />
             <i class="fa-solid fa-chevron-down text-xs"></i>
         </button>
@@ -20,7 +22,7 @@
                     v-if="open" ref="menuRef"
                     class="fixed z-[70] mt-0 rounded-2xl border border-slate-200 bg-white shadow-lg p-4"
                     :class="widthClass" :style="menuStyle"
-                    @mouseenter="emit('open')" @mouseleave="scheduleClose">
+                    @pointerenter="cancelClose(); emit('open')" @pointerleave="scheduleClose">
                     <div :class="gridClass">
                         <slot />
                     </div>
@@ -32,12 +34,14 @@
 
 <script setup>
 import {nextTick, onBeforeUnmount, onMounted, ref, watch} from "vue";
+
 const props = defineProps({
     open: { type: Boolean, default: false },
     active: { type: Boolean, default: false },
     widthClass: { type: String, default: 'w-[28rem]' },      // ahora sí se aplica
     gridClass: { type: String, default: 'grid grid-cols-2 gap-3' },
-})
+});
+
 const emit = defineEmits(['open', 'close'])
 
 const triggerRef = ref(null)
@@ -46,13 +50,13 @@ const menuStyle = ref({ top: '0px', left: '0px', maxWidth: 'min(90vw, 36rem)' })
 
 async function positionMenu () {
     await nextTick()
-    const btn = triggerRef.value?.querySelector('button') || triggerRef.value
-    const menu = menuRef.value
-    if (!btn || !menu) return
+    const btn = triggerRef.value?.querySelector('button') || triggerRef.value;
+    const menu = menuRef.value;
+    if (!btn || !menu) return;
 
     const rect = btn.getBoundingClientRect()
     const vw = window.innerWidth
-    const gap = 12
+    const gap = 6
 
     // Ancho real del menú ya renderizado (limitado por maxWidth/widthClass)
     const mw = Math.min(menu.offsetWidth || 0, vw * 0.9)
@@ -79,8 +83,15 @@ function scheduleClose () {
     closeTimer = setTimeout(() => emit('close'), 120) // un poco más generoso
 }
 
+function cancelClose () {
+    if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+    }
+}
+
 watch(() => props.open, (o) => {
-    clearTimeout(closeTimer)
+    cancelClose();
     if (o) {
         positionMenu()
         window.addEventListener('resize', handleResizeScroll, { passive: true })
@@ -93,7 +104,7 @@ watch(() => props.open, (o) => {
 
 onMounted(() => {})
 onBeforeUnmount(() => {
-    clearTimeout(closeTimer)
+    cancelClose();
     window.removeEventListener('resize', handleResizeScroll)
     window.removeEventListener('scroll', handleResizeScroll)
 })
