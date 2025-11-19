@@ -27,7 +27,7 @@
             </div>
         </LeftSidebar>
         <div :class="['sticky top-0 z-50 -mx-4 px-4 bg-white/80 backdrop-blur',
-                  hasShadow ? 'shadow-sm border-b border-slate-200' : 'border-b border-transparent']">
+                      hasShadow ? 'shadow-sm border-b border-slate-200' : 'border-b border-transparent']">
             <div class="mx-auto max-w-7xl">
                 <div class="flex items-center justify-between h-16">
                     <button
