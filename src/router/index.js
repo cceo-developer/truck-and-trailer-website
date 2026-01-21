@@ -57,12 +57,6 @@ const routes = [
     ...Auth,
 ];
 
-// export default createRouter({
-//     history: createWebHistory(),
-//     routes: routes,
-//     scrollBehavior: () => ({ top: 0 }),
-// });
-
 export default function () {
 
     const router = createRouter({

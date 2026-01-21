@@ -75,7 +75,6 @@ const defaultValues = () => ({
 const item =  ref(Object.assign({}, defaultValues()));
     
 const alvAction = () => createOauthToken(item.value);
-const alvLogin = ref(null);
 const loading = ref(false);
 
 const afterDone = (response) => {

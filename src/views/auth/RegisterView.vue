@@ -88,7 +88,7 @@
                                         }">
                                         <div class="flex justify-center items-center gap-x-2">
                                             <i v-if="loading" class="fa-solid fa-spinner fa-spin-pulse text-xl" />
-                                            <div>Sign in</div>
+                                            <div>Register</div>
                                         </div>
                                     </button>
                                 </div>

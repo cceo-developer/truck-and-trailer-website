@@ -6,11 +6,13 @@ export default [
     {
         path: '/login',
         name: 'login',
-        component: Login
+        component: Login,
+        meta: { title: 'Sign in | Truck & Trailer Storage' }
     },
     {
         path: '/register',
         name: 'register',
-        component: Register
+        component: Register,
+        meta: { title: 'Register | Truck & Trailer Storage' }
     },
 ]
