@@ -4,7 +4,7 @@
             <NavBar />
         </header>
         <main class="flex-1">
-            <slot />
+            <router-view />
         </main>
         <footer class="border-t">
             <FooterBar />
