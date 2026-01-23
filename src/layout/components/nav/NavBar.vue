@@ -48,7 +48,7 @@
                             Sign in
                         </RouterLink>
                         <div v-else class="font-bold pr-5">
-                            Hi, {{ auth.user.name }}
+                            Hi, {{ auth.user.short_name }}
                         </div>
                         <RouterLink
                             to="/quote"

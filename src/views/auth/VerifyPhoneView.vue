@@ -60,13 +60,14 @@
                                             Your phone number has been successfully verified.
                                         </div>
                                         <div class="flex justify-end pt-10">
-                                            <RouterLink 
-                                                :to="{name: 'home'}" class="text-sky-600 hover:underline hover:text-sky-700">
+                                            <button 
+                                                type="button" class="text-sky-600 hover:underline hover:text-sky-700"
+                                                @click="handleFinish">
                                                 <div class="flex items-center gap-x-2">
                                                     <i class="fa-solid fa-arrow-right-long" />
                                                     <div>go home</div>
                                                 </div>
-                                            </RouterLink>
+                                            </button>
                                         </div>
                                     </template>
                                 </div>
@@ -150,4 +151,8 @@ const handleResendCode = () => {
 const disabledResend = computed(() => {
     return loadingResend.value || timeToResend.value > 0;
 });
+
+const handleFinish = () => {
+    window.location = '/';
+}
 </script>
