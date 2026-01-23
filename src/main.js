@@ -13,6 +13,9 @@ import '@/css/style.css';
 import '@/css/flags.css'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
+// COMPOSABLES
+import {useAuth} from '@/composables/auth.js';
+
 // PRIME VUE
 import FloatLabel from 'primevue/floatlabel';
 import InputText from 'primevue/inputtext';
@@ -20,16 +23,18 @@ import Password from 'primevue/password';
 import Checkbox from 'primevue/checkbox';
 import Select from 'primevue/select';
 import InputMask from 'primevue/inputmask';
+import InputOtp from 'primevue/inputotp';
 
 // CUSTOM COMPONENTS
 import ResponsiveGuide from '@/components/widgets/ResponsiveGuide.vue';
 import FormLabel from '@/components/widgets/forms/FormLabel.vue';
 
 const pinia = createPinia();
+const auth = useAuth();
 
 const app = createApp(App);
 
-app.use(generateRouter());
+app.use(generateRouter(auth));
 app.use(alvue);
 app.use(PrimeVue, {...PrimevueTheme});
 app.use(pinia);
@@ -40,6 +45,7 @@ app.component('Password', Password);
 app.component('Checkbox', Checkbox);
 app.component('Select', Select);
 app.component('InputMask', InputMask);
+app.component('InputOtp', InputOtp);
 
 app.component('ResponsiveGuide', ResponsiveGuide);
 app.component('FormLabel', FormLabel);

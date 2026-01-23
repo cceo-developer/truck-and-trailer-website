@@ -56,7 +56,7 @@
                                             </FormLabel>
                                         </div>
                                         <RouterLink 
-                                            :to="{name: 'register'}" class="text-sky-600 hover:underline hover:text-sky-700">
+                                            :to="{name: 'forgot-password'}" class="text-sky-600 hover:underline hover:text-sky-700">
                                             forgot password?
                                         </RouterLink>
                                     </div>

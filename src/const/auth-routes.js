@@ -1,4 +1,7 @@
 export default [
     'login',
-    'register'
+    'register',
+    'forgot-password',
+    'reset-password',
+    'verify-email'
 ];

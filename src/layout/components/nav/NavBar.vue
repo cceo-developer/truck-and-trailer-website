@@ -42,15 +42,24 @@
 
                     <div class="hidden md:flex items-center gap-2">
                         <RouterLink
-                            to="/quote"
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded bg-primary-500 hover:bg-primary-600 text-white font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-                            Get a Quote
-                        </RouterLink>
-                        <RouterLink
+                            v-if="!auth"
                             :to="{name: 'login'}"
                             class="inline-flex items-center gap-2 px-4 py-2 rounded bg-primary-500 hover:bg-primary-600 text-white font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                             Sign in
                         </RouterLink>
+                        <div v-else class="font-bold pr-5">
+                            Hi, {{ auth.user.name }}
+                        </div>
+                        <RouterLink
+                            to="/quote"
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded bg-primary-500 hover:bg-primary-600 text-white font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                            Get a Quote
+                        </RouterLink>
+                        <button 
+                            v-if="auth" type="button" class="cursor-pointer px-3 py-2 hover:bg-zinc-200 rounded-full"
+                            @click="handleLogOut">
+                            <i class="pi pi-sign-out" />
+                        </button>
                     </div>
 
                     <button
@@ -79,6 +88,10 @@ import DesktopNav from './DesktopNav.vue'
 import MobileNav from './MobileNav.vue'
 import LeftSidebar from './LeftSidebar.vue'
 import { mainItems as mainItems0, services as services0, pages as pages0 } from '@/const/menuItems.js'
+// COMPOSABLES
+import {useAuth} from '@/composables/auth.js';
+
+const auth = useAuth();
 
 const mainItems = mainItems0
 const services = services0
@@ -107,6 +120,11 @@ function onDocClick(e) {
     const path = e.composedPath?.() ?? []
     const inside = path.some((n) => n instanceof HTMLElement && n.closest?.('[data-dd]'))
     if (!inside) openDd.value = null
+}
+
+const handleLogOut = () => {
+    localStorage.clear();
+    location.reload();
 }
 
 onMounted(() => {

@@ -1,5 +1,8 @@
 import {createRouter, createWebHistory} from "vue-router";
 
+// CONSTANTS
+import AUTH_ROUTES from '@/const/auth-routes.js';
+
 // ROUTES
 import Auth from '@/router/auth/auth-routes.js';
 
@@ -57,8 +60,8 @@ const routes = [
     ...Auth,
 ];
 
-export default function () {
-
+export default function (auth) {
+    
     const router = createRouter({
         history: createWebHistory(import.meta.env.BASE_URL),
         routes,
@@ -66,6 +69,18 @@ export default function () {
     })
 
     router.beforeEach((to, from, next) => {
+        if(auth && AUTH_ROUTES.includes(to.name)) {
+            
+            return next({ name: 'home' });
+        }
+
+        if(auth && auth.user.phone_verified_at !== null && to.name === 'verify-phone') {
+            return next({ name: 'home' });
+        }
+        
+        if(auth && auth.user.formatted_phone !== null && auth.user.phone_verified_at === null && to.name !== 'verify-phone') {
+            return next({ name: 'verify-phone' });
+        }
 
         return next();
     });
