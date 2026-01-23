@@ -1,6 +1,9 @@
 export function useAuth() {
     let auth;
     try {
+        const raw = localStorage.getItem('auth');
+        if (!raw) return null;
+
         const localStorageAuth = JSON.parse(atob(localStorage.auth));
         
         if(!!localStorage.auth && typeof localStorageAuth.access_token !== "undefined") {

@@ -25,7 +25,7 @@
             leave-to-class="-translate-x-full">
             <aside
                 v-if="open" role="dialog" aria-modal="true" ref="panelRef"
-                class="fixed left-0 top-0 h-dvh w-full sm:w-[20rem] z-[70] bg-[#31373f] will-change-transform"
+                class="fixed left-0 top-0 h-dvh w-full sm:w-[22rem] z-[70] bg-[#31373f] will-change-transform"
                 @keydown.esc.prevent.stop="$emit('close')">
                 <div class="flex items-center px-8 py-3">
                     <button
