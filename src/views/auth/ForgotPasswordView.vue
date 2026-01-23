@@ -79,11 +79,9 @@ const sent = ref(false);
 
 const formattedItem = computed(() => {
     const email = item.value.email ? item.value.email.trim() : null;
-    const formatted_phone = item.value.formatted_phone ? item.value.formatted_phone.trim() : null;
     return {
         ...item.value,
         email: email && email !== '' ? email : null,
-        formatted_phone: formatted_phone && formatted_phone !== '' && formatted_phone.includes('(') ? formatted_phone : null,
     }
 });
     

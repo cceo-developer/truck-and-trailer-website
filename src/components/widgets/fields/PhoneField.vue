@@ -1,6 +1,6 @@
 <template>	
     <div class="flex">
-        <Select
+        <Dropdown
             id="lada" :modelValue="areaCodeValue" name="lada"
             :options="phoneAreaCodes" optionLabel="phoneCode" optionValue="phoneCode" 
             filter autoFilterFocus resetFilterOnHide filterPlaceholder="Search area code"
@@ -28,7 +28,7 @@
                     <div>|</div><div class="text-zinc-600">{{ slotProps.option.nameEN }}</div>
                 </div>
             </template>
-        </Select>
+        </Dropdown>
         <InputMask
             :id="props.name" :modelValue="phoneNumberValue" :autoClear="false"
             mask="(999) 999 - 9999" :name="props.name" :disabled="props.disabled" 

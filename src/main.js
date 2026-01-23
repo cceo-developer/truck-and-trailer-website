@@ -43,7 +43,7 @@ app.component('InputText', InputText);
 app.component('FloatLabel', FloatLabel);
 app.component('Password', Password);
 app.component('Checkbox', Checkbox);
-app.component('Select', Select);
+app.component('Dropdown', Select);
 app.component('InputMask', InputMask);
 app.component('InputOtp', InputOtp);
 
