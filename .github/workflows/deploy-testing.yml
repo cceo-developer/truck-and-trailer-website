@@ -1,0 +1,34 @@
+name: Deploy Testing
+
+on:
+    release:
+        types: [ prereleased ]
+
+jobs:
+    deploy:
+        name: Deploy
+        environment: testing
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+
+            - name: Setup node
+              uses: actions/setup-node@v4
+              with:
+                node-version: 22
+
+            - name: Install dependencies
+              uses: bahmutov/npm-install@v1
+
+            - name: Build project
+              run: npm run build
+
+            - name: Generate Key
+              run: echo "${{ secrets.TESTING_KEY }}" > key.pem
+
+            - name: Key permissions
+              run: chmod 500 key.pem
+
+            - name: Deploy project
+              run: scp -o 'StrictHostKeyChecking no' -i key.pem -r dist ${{ secrets.TESTING_USER }}@${{ secrets.TESTING_HOST }}:${{ secrets.TESTING_PATH }}
