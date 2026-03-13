@@ -10,8 +10,8 @@ export function getVehicles(params) {
         rows: params.rows,
         sortField: params.sortField ?? params.orderBy ?? null,
         sortOrder: params.sortOrder ?? params.ascending ?? null,
-        columns: typeof params.columns === 'string' ? params.columns : JSON.stringify(params.columns ?? []),
-        filters: typeof params.filters === 'string' ? params.filters : JSON.stringify(params.filters ?? {}),
+        columns: typeof params.columns === 'string' ? params.columns : JSON.stringify(params.columns),
+        filters: typeof params.filters === 'string' ? params.filters : JSON.stringify(params.filters),
     });
 }
 

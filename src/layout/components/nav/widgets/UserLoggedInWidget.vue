@@ -42,7 +42,8 @@ const auth = useAuth();
 const CUSTOMER_SECTIONS = [
     {route: 'vehicles', icon: 'fa-solid fa-truck', title: 'My vehicles', description: 'Manage registered vehicles'},
     {route: 'driver-licenses', icon: 'fa-solid fa-id-card', title: 'My driver licenses', description: 'Review driver licenses'},
-    {route: 'payment-methods', icon: 'fa-solid fa-credit-card', title: 'My payment methods', description: 'Manage saved payment methods'}
+    {route: 'payment-methods', icon: 'fa-solid fa-credit-card', title: 'My payment methods', description: 'Manage saved payment methods'},
+    {route: 'reservations', icon: 'fa-solid fa-calendar', title: 'My reservations', description: 'Review reservations'}
 ];
 
 const popover = ref(null);

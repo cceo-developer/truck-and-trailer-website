@@ -2,9 +2,9 @@ import { useService } from "@/composables/service.js";
 
 const service = useService()
 
-export const moduleURI = "stripe/payment-methods";
+export const moduleURI = 'reservations/reservations';
 
-export function getPaymentMethods(params) {
+export function getReservations(params) {
     return service.get(`/${moduleURI}`, {
         first: params.first,
         rows: params.rows,
@@ -13,14 +13,4 @@ export function getPaymentMethods(params) {
         columns: typeof params.columns === 'string' ? params.columns : JSON.stringify(params.columns),
         filters: typeof params.filters === 'string' ? params.filters : JSON.stringify(params.filters),
     });
-}
-
-export function showPaymentMethod(id, columns = ['id']) {
-    return service.get(`${moduleURI}/${id}`, {
-        columns: typeof columns === 'string' ? columns : JSON.stringify(columns)
-    });
-}
-
-export function deletePaymentMethod(id) {
-    return service.delete(`${moduleURI}/${id}`);
 }
