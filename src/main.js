@@ -17,6 +17,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import {useAuth} from '@/composables/auth.js';
 
 // PRIME VUE
+import Tooltip from 'primevue/tooltip';
 import FloatLabel from 'primevue/floatlabel';
 import InputText from 'primevue/inputtext';
 import Password from 'primevue/password';
@@ -24,6 +25,12 @@ import Checkbox from 'primevue/checkbox';
 import Select from 'primevue/select';
 import InputMask from 'primevue/inputmask';
 import InputOtp from 'primevue/inputotp';
+import Popover from 'primevue/popover';
+import Paginator from 'primevue/paginator';
+import Skeleton from 'primevue/skeleton';
+import IconField from 'primevue/iconfield';
+import InputIcon from 'primevue/inputicon';
+
 
 // CUSTOM COMPONENTS
 import ResponsiveGuide from '@/components/widgets/ResponsiveGuide.vue';
@@ -33,6 +40,8 @@ const pinia = createPinia();
 const auth = useAuth();
 
 const app = createApp(App);
+
+app.directive('tooltip', Tooltip);
 
 app.use(generateRouter(auth));
 app.use(alvue);
@@ -46,6 +55,11 @@ app.component('Checkbox', Checkbox);
 app.component('Dropdown', Select);
 app.component('InputMask', InputMask);
 app.component('InputOtp', InputOtp);
+app.component('Popover', Popover);
+app.component('Paginator', Paginator);
+app.component('Skeleton', Skeleton);
+app.component('IconField', IconField);
+app.component('InputIcon', InputIcon);
 
 app.component('ResponsiveGuide', ResponsiveGuide);
 app.component('FormLabel', FormLabel);

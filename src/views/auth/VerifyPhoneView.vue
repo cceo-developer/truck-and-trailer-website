@@ -111,9 +111,17 @@ onMounted(() => {
 
 const alvAction = () => verifyPhone(auth.user.id, item.value);
 
-const afterDone = () => {
+const afterDone = (response) => {
     loading.value = false;
     verified.value = true;
+    
+    localStorage.auth = btoa(JSON.stringify({
+        user: {
+            ...response,
+            permissions: auth.user.permissions 
+        },
+        access_token: auth.access_token
+    }));
 }
 
 const afterError = (response) => {
