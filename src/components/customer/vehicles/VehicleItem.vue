@@ -24,9 +24,9 @@
             </div>
             <div v-if="!props.vehicle.insurance_policy_id">
                 <div class="bg-red-100 max-w-max px-3 rounded-lg py-1">
-                    <div class="flex items-center gap-x-2 text-red-500 font-semibold text-sm">
+                    <div class="flex items-center gap-x-2 text-red-500 font-semibold text-xs">
                         <i class="fa-solid fa-circle-exclamation"></i>
-                        <div>No loaded policy</div>
+                        <div>NO LOADED POLICY</div>
                     </div>
                 </div>
             </div>

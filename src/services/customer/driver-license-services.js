@@ -2,9 +2,9 @@ import { useService } from "@/composables/service.js";
 
 const service = useService()
 
-export const moduleURI = "vehicles/vehicles";
+export const moduleURI = "drivers/driver-licenses";
 
-export function getVehicles(params) {
+export function getDriverLicenses(params) {
     return service.get(`/${moduleURI}`, {
         first: params.first,
         rows: params.rows,
@@ -15,20 +15,20 @@ export function getVehicles(params) {
     });
 }
 
-export function showVehicle(id, columns = ['id']) {
+export function showDriverLicense(id, columns = ['id']) {
     return service.get(`${moduleURI}/${id}`, {
         columns: typeof columns === 'string' ? columns : JSON.stringify(columns)
     });
 }
 
-export function deleteVehicle(id) {
+export function deleteDriverLicense(id) {
     return service.delete(`${moduleURI}/${id}`);
 }
 
-export function createVehicle(attributes) {
+export function createDriverLicense(attributes) {
     return service.post(`/${moduleURI}`, attributes);
 }
 
-export function updateVehicle(id, attributes) {
+export function updateDriverLicense(id, attributes) {
     return service.put(`/${moduleURI}/${id}`, attributes);
 }

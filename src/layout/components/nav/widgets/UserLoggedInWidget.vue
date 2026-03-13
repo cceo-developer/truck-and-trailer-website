@@ -10,7 +10,7 @@
         ref="popover" :pt="{content: {class: '!p-5'}, root: {class: '!rounded-xl'}}"
         @mouseenter="cancelClose"
         @mouseleave="scheduleClose">
-        <div>
+        <div class="grid grid-cols-2 gap-4">
             <template v-for="(section, index) in CUSTOMER_SECTIONS" :key="`customer_section.${index}`">
                 <RouterLink :to="{name: section.route}">
                     <div class="hover:bg-zinc-200 p-3 rounded-lg">
@@ -40,7 +40,8 @@ import { useAuth } from '@/composables/auth.js';
 const auth = useAuth();
 
 const CUSTOMER_SECTIONS = [
-    {route: 'vehicles', icon: 'fa-solid fa-truck', title: 'My vehicles', description: 'Manage registered vehicles'}
+    {route: 'vehicles', icon: 'fa-solid fa-truck', title: 'My vehicles', description: 'Manage registered vehicles'},
+    {route: 'driver-licenses', icon: 'fa-solid fa-id-card', title: 'My driver licenses', description: 'Review driver licenses'}
 ];
 
 const popover = ref(null);

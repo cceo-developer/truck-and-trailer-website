@@ -39,3 +39,8 @@ coverage
 
 # Vitest
 __screenshots__/
+
+
+# AI AGENTS
+.agent/
+.agents/

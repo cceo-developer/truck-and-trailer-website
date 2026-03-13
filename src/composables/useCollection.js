@@ -46,7 +46,7 @@ export default function useCollection(options = {}) {
         Object.keys(query.filters).forEach((key) => {
             const rawValue = query.filters[key]?.value ?? null;
 
-            parsed[key] = {value: rawValue !== null && rawValue !== '' ? rawValue : null};
+            parsed[key] = { value: rawValue !== null && rawValue !== '' ? rawValue : null };
         });
 
         return parsed;
