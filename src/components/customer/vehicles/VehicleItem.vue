@@ -1,7 +1,7 @@
 <template>
     <div class="border border-zinc-400 rounded-xl h-full flex flex-col transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]">
-        <div class="overflow-hidden h-30">
-            <img :src="image" alt="Trailer" class="w-full h-full object-cover object-[100%_60%] rounded-t-xl opacity-70" />
+        <div class="overflow-hidden h-20">
+            <img :src="image" alt="Trailer" class="w-full h-full object-cover object-[100%_80%] rounded-t-xl opacity-70" />
         </div>
         <div class="p-5 space-y-4 flex flex-col flex-1 justify-between">
             <div class="space-y-1">
