@@ -1,25 +1,8 @@
 <template>
     <div class="w-full space-y-6">
         <div class="pt-8 flex justify-end">
-            <div class="flex items-center gap-x-2">
-                <FloatLabel variant="on">
-                    <IconField>
-                        <InputIcon class="pi pi-search" />
-                        <InputText 
-                            id="search" v-model="search" name="search" fluid style="border-radius: 30px; width: 35rem;"
-                            @update:model-value="$value => handleGlobalFilter($value)" />
-                        <InputIcon v-if="loading" class="pi pi-spin pi-spinner" />
-                        <InputIcon v-else-if="search !== null">
-                            <button 
-                                type="button" v-tooltip.right="{value: 'Reset filters', pt: {text: {class: '!bg-zinc-950 !font-semibold !text-sm !min-w-max'}}}"
-                                class="text-zinc-400 hover:text-zinc-700" @click="onResetFilters">
-                                <i class="fa-solid fa-xmark" style="font-size: 1rem;" />
-                            </button>
-                        </InputIcon>
-                    </IconField>
-                    <FormLabel for="search" label="Search" />
-                </FloatLabel>
-            </div>
+            <SearchInput 
+                v-model="search" :loading="loading" @search="$value => handleSearch($value)" @reset="onResetFilters" />
         </div>
         <div v-if="loading">
             <div class="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-6">
@@ -35,7 +18,7 @@
                         <PaymentMethodsItem :paymentMethod="pm" />
                     </template>
                 </div>
-                <div class="w-full">
+                <div class="w-full pt-1 border-t border-zinc-300">
                     <Paginator
                         :rows="query.perPage" :totalRecords="total" :first="offset" :rowsPerPageOptions="[6, 12, 24]"
                         template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
@@ -60,7 +43,7 @@ import image from "@/assets/images/no_data_information.png";
 import useCollection from '@/composables/useCollection.js';
 import { getPaymentMethods } from '@/services/customer/payment-method-services.js';
 import PaymentMethodsItem from '@/components/customer/payment-methods/PaymentMethodsItem.vue';
-import {debounce} from 'lodash';
+import SearchInput from '@/components/widgets/widgets/SearchInput.vue';
 
 const search = ref(null);
 
@@ -98,13 +81,9 @@ const onResetFilters = async () => {
     await load();
 };
 
-const handleGlobalFilter = debounce(async (filter) => {
-    let _filter = filter?.trim();
-    if(_filter === '' || _filter === null) {
-        search.value = null;
-    }
-    setFilter('search', {value: _filter});
+const handleSearch = async (filter) => {
+    setFilter('search', {value: filter});
     await load();
-}, 900);
+};
 
 </script>
