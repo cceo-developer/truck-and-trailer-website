@@ -49,6 +49,12 @@ const useTables = (dataTable, stateKey, _filters, _service, _search_id = null) =
         _service(_lazyParams).then((response) => {
             items.value = response.data;
             totalRecords.value = response.count;
+        }).catch((err) => {
+            items.value = [];
+            totalRecords.value = 0;
+            console.error(err);
+        })
+        .finally(() => {
             loading.value = false;
         });
     };

@@ -5,7 +5,7 @@ export const NO_INFORMATION_OBJECT = {
 export const RESERVATION_STATUSES = [
     { label: 'Canceled', color: '#dc2626', background: '#fef2f2', icon: 'fa-solid fa-circle-xmark' },
     { label: 'Refunded', color: '#7e22ce', background: '#faf5ff', icon: 'fa-solid fa-rotate-right' },
-    { label: 'Pending', color: '#ca8a04', background: '#fefce8', icon: 'fa-solid fa-solid fa-clock' },
+    { label: 'Pending', color: '#ca8a04', background: '#fefce8', icon: 'fa-solid fa-clock' },
     { label: 'Confirmed', color: '#0284c7', background: '#f0f9ff', icon: 'fa-solid fa-calendar-check' },
     { label: 'In progress', color: '#0d9488', background: '#ecfdf5', icon: 'fa-solid fa-stopwatch' },
     { label: 'Check-in delayed', color: '#d97706', background: '#fff7ed', icon: 'fa-solid fa-person-circle-question' },

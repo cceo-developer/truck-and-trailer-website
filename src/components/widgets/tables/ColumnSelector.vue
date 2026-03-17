@@ -21,10 +21,16 @@ const props = defineProps({
 const handleColumnsChange = debounce(() => saveColumnsInLocalStorage(), 1000);
 
 const saveColumnsInLocalStorage = () => {
+    if (!props.stateKey) {
+        return;
+    }
     localStorage.setItem(`${props.stateKey}_columns`, JSON.stringify(selectedColumns.value));
 }
 
 const defaultSelectedColumns = () => {
+    if (!props.stateKey) {
+        return props.columnOptions.map(column => column.field);
+    }
     let saved_selected_columns = JSON.parse(localStorage.getItem(`${props.stateKey}_columns`));
 
     let updated = saved_selected_columns && saved_selected_columns.every(selected => props.columnOptions.some((column) => column.field == selected))

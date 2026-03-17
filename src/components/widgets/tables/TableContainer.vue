@@ -10,7 +10,7 @@
             :value="items" 
             :totalRecords="totalRecords" 
             :loading="loading"
-            :stateKey="stateKey"
+            :stateKey="props.stateKey"
 			
             dataKey="id" :lazy="true" :paginator="true" scrollable removableSort 
             :scrollHeight="props.scrollHeight" class="p-datatable-sm custom-scrollbar" 
@@ -72,7 +72,7 @@ const deleteModal = ref(null);
 const handleRestoreFilters = () => (props.searchId ? restoreLazyParams() : restoreFilters());
 
 const showFilterMenu = computed(() => {
-    return filterDisplay == 'menu';
+    return filterDisplay === 'menu';
 });
 
 const {
