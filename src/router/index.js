@@ -5,6 +5,7 @@ import AUTH_ROUTES from '@/const/auth-routes.js';
 
 // ROUTES
 import Auth from '@/router/auth/auth-routes.js';
+import CustomerSections from '@/router/customer/customer-section-routes.js';
 
 const Home = () => import('@/views/Home.vue');
 const Services = () => import('@/views/Services.vue');
@@ -58,6 +59,7 @@ const routes = [
 
     // 
     ...Auth,
+    ...CustomerSections,
 ];
 
 export default function (auth) {

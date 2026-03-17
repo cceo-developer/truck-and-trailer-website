@@ -48,7 +48,7 @@
                             Sign in
                         </RouterLink>
                         <div v-else class="font-bold pr-5">
-                            Hi, {{ auth.user.short_name }}
+                            <UserLoggedInWidget />
                         </div>
                         <RouterLink
                             to="/quote"
@@ -57,6 +57,7 @@
                         </RouterLink>
                         <button 
                             v-if="auth" type="button" class="cursor-pointer px-3 py-2 hover:bg-zinc-200 rounded-full"
+                            v-tooltip.right="{value: 'Log out', pt: {text: {class: '!bg-zinc-950 !font-semibold !text-sm !min-w-max'}}}"
                             @click="handleLogOut">
                             <i class="pi pi-sign-out" />
                         </button>
@@ -90,6 +91,7 @@ import LeftSidebar from './LeftSidebar.vue'
 import { mainItems as mainItems0, services as services0, pages as pages0 } from '@/const/menuItems.js'
 // COMPOSABLES
 import {useAuth} from '@/composables/auth.js';
+import UserLoggedInWidget from '@/layout/components/nav/widgets/UserLoggedInWidget.vue'
 
 const auth = useAuth();
 
