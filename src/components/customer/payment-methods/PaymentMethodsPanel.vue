@@ -15,7 +15,7 @@
             <template v-if="items.length > 0">
                 <div class="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
                     <template v-for="(pm, index) in items" :key="`pm_${index}`">
-                        <PaymentMethodsItem :paymentMethod="pm" />
+                        <PaymentMethodsItem :paymentMethod="pm" @delete-payment-method="deleteModal.showConfirm('stripe/payment-methods', pm.id)" />
                     </template>
                 </div>
                 <div class="w-full pt-1 border-t border-zinc-300">
@@ -31,10 +31,18 @@
                 <div class="flex flex-col items-center">
                     <img :src="image" alt="No data" class="w-[20rem] opacity-60" />
                     <div class="text-zinc-600 text-lg">No payment methods have been recorded</div>
+                    <div class="pt-10">
+                        <SecondaryButton @click="() => modal.showStore()">
+                            <i class="fa-solid fa-plus"></i>
+                            add your first payment method to get started
+                        </SecondaryButton>
+                    </div>
                 </div>
             </template>
         </div>
     </div>
+    <PaymentMethodsModal ref="modal" />
+    <ConfirmDeleteModal ref="deleteModal" @done="load()" />
 </template>
 
 <script setup>
@@ -44,6 +52,11 @@ import useCollection from '@/composables/useCollection.js';
 import { getPaymentMethods } from '@/services/customer/payment-method-services.js';
 import PaymentMethodsItem from '@/components/customer/payment-methods/PaymentMethodsItem.vue';
 import SearchInput from '@/components/widgets/widgets/SearchInput.vue';
+import ConfirmDeleteModal from "@/components/widgets/modal/ConfirmDeleteModal.vue";
+import PaymentMethodsModal from './PaymentMethodsModal.vue';
+
+const modal = ref(null);
+const deleteModal = ref(null);
 
 const search = ref(null);
 
@@ -85,5 +98,11 @@ const handleSearch = async (filter) => {
     setFilter('search', {value: filter});
     await load();
 };
+
+const openModal = () => {
+    modal.value.showStore();
+}
+
+defineExpose({ openModal });
 
 </script>

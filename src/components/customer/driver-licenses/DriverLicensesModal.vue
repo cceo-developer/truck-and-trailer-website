@@ -32,16 +32,16 @@
                         <InputText v-model="item.address" name="address" :disabled="readonly" class="w-full" />
                     </div>
                     <div class="form-error">
-						<InputLabel for="country_id" label="Country:" required :readonly="readonly" />
-						<CountriesDropdown 
-							v-model="item.country_id" :disabled="readonly" :showClear="false" 
-							@update:model-value="clearProperty('state_id')" />
-					</div>
-					<div class="form-error">
-						<InputLabel for="state_id" label="State:" required :readonly="readonly" />
-						<StatesDropdown 
-							v-model="item.state_id" :disabled="readonly" :showClear="false" :filters="stateFilters" />
-					</div>
+                        <InputLabel for="country_id" label="Country:" required :readonly="readonly" />
+                        <CountriesDropdown 
+                            v-model="item.country_id" :disabled="readonly" :showClear="false" 
+                            @update:model-value="clearProperty('state_id')" />
+                    </div>
+                    <div class="form-error">
+                        <InputLabel for="state_id" label="State:" required :readonly="readonly" />
+                        <StatesDropdown 
+                            v-model="item.state_id" :disabled="readonly" :showClear="false" :filters="stateFilters" />
+                    </div>
                 </FormSection>
             </div>	
         </alv-form>
