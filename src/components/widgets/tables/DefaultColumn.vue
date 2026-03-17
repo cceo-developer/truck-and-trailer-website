@@ -1,14 +1,14 @@
 <template>
-	<div :class="props.column.bodyClass && !dataIsNull ? props.column.bodyClass(data) : ''">
-		<div :class="{'text-zinc-300' : dataIsNull}">
-			<template v-if="props.column.bodyTemplate">
-				{{ props.column.bodyTemplate(data) ?? 'No information' }}	
-			</template>
-			<template v-else>
-				{{ props.data[props.column.field] ?? 'No information' }}
-			</template>
-		</div>
-	</div>
+    <div :class="props.column.bodyClass && !dataIsNull ? props.column.bodyClass(data) : ''">
+        <div :class="{'text-zinc-300' : dataIsNull}">
+            <template v-if="props.column.bodyTemplate">
+                {{ props.column.bodyTemplate(data) ?? 'No information' }}	
+            </template>
+            <template v-else>
+                {{ props.data[props.column.field] ?? 'No information' }}
+            </template>
+        </div>
+    </div>
 </template>
 
 <script setup>

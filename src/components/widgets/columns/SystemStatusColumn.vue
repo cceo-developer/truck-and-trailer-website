@@ -1,12 +1,12 @@
 <template>
-	<div class="px-2">
-		<div class="text-center rounded-lg py-1 font-bold px-6" :style="{'color':`${currentStatus.color}`, 'background':`${currentStatus.background}`}">
-			<div class="flex items-center gap-x-4">
-				<i :class="`${currentStatus.icon}`" style="font-size: 1.2rem;" /> 
-				<div>{{ currentStatus.show ?? currentStatus.label }}</div>
-			</div>
-		</div>
-	</div> 
+    <div class="px-2">
+        <div class="text-center rounded-lg py-1 font-bold px-6" :style="{'color':`${currentStatus.color}`, 'background':`${currentStatus.background}`}">
+            <div class="flex items-center gap-x-4">
+                <i :class="`${currentStatus.icon}`" style="font-size: 1.2rem;" /> 
+                <div>{{ currentStatus.show ?? currentStatus.label }}</div>
+            </div>
+        </div>
+    </div> 
 </template>
 
 <script setup>

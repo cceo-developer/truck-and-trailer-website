@@ -1,9 +1,9 @@
 <template>
-	<MultiSelect 
-		v-model="selectedColumns" :options="props.columnOptions" optionLabel="header" optionValue="field" 
-		filter autoFilterFocus resetFilterOnHide :maxSelectedLabels="0"
-		:selectedItemsLabel="`showing {0} of ${props.columnOptions.length} columns`" placeholder="No column selected." 
-		@update:model-value="handleColumnsChange" />
+    <MultiSelect 
+        v-model="selectedColumns" :options="props.columnOptions" optionLabel="header" optionValue="field" 
+        filter autoFilterFocus resetFilterOnHide :maxSelectedLabels="0"
+        :selectedItemsLabel="`showing {0} of ${props.columnOptions.length} columns`" placeholder="No column selected." 
+        @update:model-value="handleColumnsChange" />
 </template>
 
 <script setup>
