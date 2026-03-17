@@ -1,15 +1,14 @@
 <template>
     <div>
         <DropdownBase
-            id="vehicle_type_id"
+            id="country_id"
             ref="dropdown"
             v-model="item"
-            name="vehicle_type_id"
+            name="country_id"
             :optionLabel="record => getLabel(record)"
-            :service="getVehicleTypes"
+            :service="getCountries"
             :columns="props.columns"
-            :filters="props.filters"
-            mainFilter="name"
+            mainFilter="search"
             :disabled="props.disabled"
             :showClear="props.showClear"
             :showAddNew="false"
@@ -17,7 +16,10 @@
             <template #option="slotProps">
                 <slot v-if="$slots.option" name="option" :option="slotProps.option" />
                 <div v-else>
-                    <div>{{ slotProps.option.name }}</div>
+                    <div>
+                        {{ slotProps.option.name }} 
+                        <span class="text-zinc-400">({{ slotProps.option.abbreviation }})</span>
+                    </div>
                 </div>
             </template>
         </DropdownBase>
@@ -29,13 +31,13 @@
 import {ref} from 'vue';
 import DropdownBase from '@/components/widgets/dropdowns/DropdownBase.vue';
 // SERVICE
-import {getVehicleTypes} from '@/services/customer/vehicle-type-services.js';
+import {getCountries} from '@/services/customer/country-services.js';
 
 const props = defineProps({
-    columns: {type: Array, default: () => ['id', 'name']},
+    columns: {type: Array, default: () => ['id', 'name', 'abbreviation']},
     filters: {type: Object, default: () => {}},
     disabled: {type: Boolean, default: () => false},
-    showClear: {type: Boolean, default: () => true},  
+    showClear: {type: Boolean, default: () => true}, 
 });
 
 const item = defineModel({type: [Number, String, null], required: true});

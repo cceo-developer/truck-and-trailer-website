@@ -2,6 +2,7 @@
     <div v-if="!loadingUserData">
         <component :is="layout.current" />
     </div>
+    <Toast />
 </template>
 
 

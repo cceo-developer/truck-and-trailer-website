@@ -18,6 +18,7 @@ import { useAuth } from '@/composables/auth.js';
 
 // PRIME VUE
 import ToastService from 'primevue/toastservice';
+import Toast from 'primevue/toast';
 import Tooltip from 'primevue/tooltip';
 import FloatLabel from 'primevue/floatlabel';
 import InputText from 'primevue/inputtext';
@@ -37,6 +38,8 @@ import ColumnGroup from 'primevue/columngroup';
 import Row from 'primevue/row';
 import DatePicker from 'primevue/datepicker';
 import Dialog from 'primevue/dialog';
+import FileUpload from 'primevue/fileupload';
+import Image from 'primevue/image';
 
 // CUSTOM COMPONENTS
 import ResponsiveGuide from '@/components/widgets/ResponsiveGuide.vue';
@@ -83,6 +86,9 @@ app.component('ColumnGroup', ColumnGroup);
 app.component('Row', Row);
 app.component('DatePicker', DatePicker);
 app.component('PVDialog', Dialog);
+app.component('Toast', Toast);
+app.component('FileUpload', FileUpload);
+app.component('PVImage', Image);
 
 // CUSTOM
 app.component('ActionsOfTable', ActionsOfTable);
