@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="pt-2 pb-12">
+    <div class="pt-10 pb-12">
         <div class="max-w-7xl mx-auto px-8 md:px-4 gap-10">
             <ReservationsTable />
         </div>

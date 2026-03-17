@@ -11,6 +11,8 @@
                     <template #body="{ data }">
                         <SystemStatusColumn v-if="column.field == 'payment_status'" :status="data.payment_status" :options="RESERVATION_PAYMENT_STATUSES" />
                         <SystemStatusColumn v-else-if="column.field == 'active_status'" :status="data.active_status" :options="RESERVATION_STATUSES" />
+                        <DateTimeColumn v-else-if="column.field == 'arrival_date'" :value="data.arrival_date" withTime />
+                        <DateTimeColumn v-else-if="column.field == 'departure_date'" :value="data.departure_date" withTime />
                         <DefaultColumn v-else :column="column" :data="data" />
                     </template>
                     <template #filter="{filterModel, filterCallback}">
@@ -38,6 +40,7 @@ import SystemStatusColumn from '@/components/widgets/columns/SystemStatusColumn.
 import {getReservations} from '@/services/customer/reservation-services.js';
 // CONSTANTS
 import {RESERVATION_PAYMENT_STATUSES, RESERVATION_STATUSES} from '@/constants/system_statuses.js';
+import DateTimeColumn from '@/components/widgets/tables/DateTimeColumn.vue';
 
 const table = ref({});
 const stateKey = "reservations_table";

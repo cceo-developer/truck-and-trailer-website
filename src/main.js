@@ -17,6 +17,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useAuth } from '@/composables/auth.js';
 
 // PRIME VUE
+import ToastService from 'primevue/toastservice';
 import Tooltip from 'primevue/tooltip';
 import FloatLabel from 'primevue/floatlabel';
 import InputText from 'primevue/inputtext';
@@ -35,10 +36,21 @@ import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';
 import Row from 'primevue/row';
 import DatePicker from 'primevue/datepicker';
+import Dialog from 'primevue/dialog';
 
 // CUSTOM COMPONENTS
 import ResponsiveGuide from '@/components/widgets/ResponsiveGuide.vue';
 import FormLabel from '@/components/widgets/forms/FormLabel.vue';
+import ActionsOfTable from '@/components/widgets/tables/ActionsOfTable.vue';
+import PrimaryButton from '@/components/widgets/buttons/PrimaryButton.vue';
+import SecondaryButton from '@/components/widgets/buttons/SecondaryButton.vue';
+import AlertButton from '@/components/widgets/buttons/AlertButton.vue';
+import FormSection from '@/components/widgets/forms/FormSection.vue';
+import InputLabel from '@/components/widgets/forms/InputLabel.vue';
+import SectionWidget from '@/components/widgets/forms/SectionWidget.vue';
+import ActionButton from '@/components/widgets/tables/ActionButton.vue';
+import IconButton from '@/components/widgets/buttons/IconButton.vue';
+import ScreenSizeWidget from '@/components/widgets/tests/ScreenSizeWidget.vue';
 
 const pinia = createPinia();
 const auth = useAuth();
@@ -51,6 +63,7 @@ app.use(generateRouter(auth));
 app.use(alvue);
 app.use(PrimeVue, { ...PrimevueTheme });
 app.use(pinia);
+app.use(ToastService);
 
 app.component('InputText', InputText);
 app.component('FloatLabel', FloatLabel);
@@ -69,7 +82,19 @@ app.component('Column', Column);
 app.component('ColumnGroup', ColumnGroup);
 app.component('Row', Row);
 app.component('DatePicker', DatePicker);
+app.component('PVDialog', Dialog);
 
+// CUSTOM
+app.component('ActionsOfTable', ActionsOfTable);
+app.component('PrimaryButton', PrimaryButton);
+app.component('SecondaryButton', SecondaryButton);
+app.component('FormSection', FormSection);
+app.component('InputLabel', InputLabel);
+app.component('SectionWidget', SectionWidget);
+app.component('ActionButton', ActionButton);
+app.component('AlertButton', AlertButton);
+app.component('IconButton', IconButton);
+app.component('ScreenSizeWidget', ScreenSizeWidget);
 app.component('ResponsiveGuide', ResponsiveGuide);
 app.component('FormLabel', FormLabel);
 

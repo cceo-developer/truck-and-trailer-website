@@ -1,6 +1,9 @@
 import { readonly } from 'vue';
 import { FilterMatchMode } from '@primevue/core/api';
-import { RESERVATION_STATUSES, RESERVATION_PAYMENT_STATUSES } from '@/constants/system_statuses.js';
+import useFormatter from '@/composables/formatter.js';
+import { RESERVATION_STATUSES } from '@/constants/system_statuses.js';
+
+const formatter = useFormatter();
 
 const columns = [
     {
@@ -11,7 +14,7 @@ const columns = [
     },
     {
         field: 'global_folio',
-        header: 'Global number',
+        header: 'Reservation number',
         filter: { value: null, matchMode: FilterMatchMode.CONTAINS },
         default: true,
     },
@@ -20,12 +23,6 @@ const columns = [
         header: 'ID User',
         filter: { value: null, matchMode: FilterMatchMode.CONTAINS },
         default: false,
-    },
-    {
-        field: 'user_name',
-        header: 'Customer',
-        filter: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        default: true,
     },
     {
         field: 'parking_lot_id',
@@ -64,12 +61,6 @@ const columns = [
         default: false,
     },
     {
-        field: 'driver_license_name',
-        header: 'Driver',
-        filter: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        default: true,
-    },
-    {
         field: 'arrival_date',
         header: 'Arrival',
         filter: { value: null, matchMode: FilterMatchMode.DATE_IS },
@@ -82,24 +73,10 @@ const columns = [
         default: true,
     },
     {
-        field: 'formatted_duration',
-        header: 'Duration',
-        filter: { value: null, matchMode: FilterMatchMode.DATE_IS },
-        default: true,
-    },
-    {
         field: 'total',
         header: 'Total',
+        bodyTemplate: (data) => (formatter.currency(data.total ?? 0)),
         filter: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        default: true,
-    },
-    {
-        field: 'payment_status',
-        header: 'Payment status',
-        options: RESERVATION_PAYMENT_STATUSES.map(element => {
-            return { label: element.label, value: element.label }
-        }),
-        filter: { value: null, matchMode: FilterMatchMode.EQUALS },
         default: true,
     },
     {
@@ -110,18 +87,6 @@ const columns = [
         }),
         filter: { value: null, matchMode: FilterMatchMode.EQUALS },
         default: true,
-    },
-    {
-        field: 'check_in',
-        header: 'Check-in',
-        filter: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        default: false,
-    },
-    {
-        field: 'check_out',
-        header: 'Check-out',
-        filter: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        default: false,
     },
 ];
 const filters = readonly(
