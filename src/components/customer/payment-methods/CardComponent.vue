@@ -11,15 +11,11 @@ import { useStripeElements } from '@/composables/stripe-elements.js';
 const elements = ref(null);
 const loading = ref(false);
 
-const props = defineProps({
-    userId: {type: [Number, null, String], required: true}
-});
-
 const emit = defineEmits(['blur', 'focus', 'complete'])
 
 onMounted(() =>  {
     loading.value = true;
-    useStripeElements({user_id: props.userId}).then((_elements) => {
+    useStripeElements().then((_elements) => {
         elements.value = _elements;
         const options = {
             layout: 'tabs',

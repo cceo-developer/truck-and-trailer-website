@@ -2,10 +2,10 @@ import {useService} from "@/composables/service.js";
 
 const service = useService()
 
-export const brandModuleURI = "vehicles/brands";
+export const moduleURI = "vehicles/brands";
 
 export function getBrands(params) {
-    return service.get(brandModuleURI, {
+    return service.get(`/${moduleURI}`, {
         first: params.first,
         rows: params.rows,
         sortField: params.sortField ?? params.orderBy,
@@ -16,7 +16,7 @@ export function getBrands(params) {
 }
 
 export function showBrand(id, columns = ['id']) {
-    return service.get(`${brandModuleURI}/${id}`, {
+    return service.get(`/${moduleURI}/${id}`, {
         columns: typeof columns === 'string' ? columns : JSON.stringify(columns)
     });
 }

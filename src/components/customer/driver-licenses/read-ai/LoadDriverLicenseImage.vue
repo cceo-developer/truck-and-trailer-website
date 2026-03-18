@@ -38,7 +38,7 @@
 
 <script setup>
 // IMPORTS
-import {ref} from 'vue';
+import {ref, onBeforeUnmount} from 'vue';
 // SERVICE
 import {analyzeDriverLicense} from '@/services/customer/driver-license-services.js';
 
@@ -55,6 +55,9 @@ const preview = ref(null);
 const fileName = ref(null);
 
 const clearImage = () => {
+    if (preview.value) {
+        URL.revokeObjectURL(preview.value);
+    }
     item.value.image_to_upload = null;
     preview.value = null;
     fileName.value = null;
@@ -65,6 +68,9 @@ const clearImage = () => {
 
 const handleFileChange = (value) => {
     const file = value.files[0];
+    if (preview.value) {
+        URL.revokeObjectURL(preview.value);
+    }
     preview.value = URL.createObjectURL(file);    
     item.value.image_to_upload = file;
     fileName.value = file.name;
@@ -79,6 +85,13 @@ const handleFileChange = (value) => {
         loading.value = false;
     });
 }
+
+onBeforeUnmount(() => {
+    if (preview.value) {
+        URL.revokeObjectURL(preview.value);
+    }
+});
+
 </script>
 
 <style scoped>

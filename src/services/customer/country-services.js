@@ -1,10 +1,10 @@
 import { useService } from "@/composables/service.js";
 
 const service = useService()
-export const countryModuleURI = "geography/countries";
+export const moduleURI = "geography/countries";
 
 export function getCountries(params) {
-    return service.get(countryModuleURI, {
+    return service.get(`/${moduleURI}`, {
         first: params.first,
         rows: params.rows,
         sortField: params.sortField ?? params.orderBy,
@@ -15,7 +15,7 @@ export function getCountries(params) {
 }
 
 export function showCountry(id, columns = ['id']) {
-    return service.get(`${countryModuleURI}/${id}`, {
+    return service.get(`/${moduleURI}/${id}`, {
         columns: typeof columns === 'string' ? columns : JSON.stringify(columns)
     });
 }

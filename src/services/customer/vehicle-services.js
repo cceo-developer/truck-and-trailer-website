@@ -16,13 +16,13 @@ export function getVehicles(params) {
 }
 
 export function showVehicle(id, columns = ['id']) {
-    return service.get(`${moduleURI}/${id}`, {
+    return service.get(`/${moduleURI}/${id}`, {
         columns: typeof columns === 'string' ? columns : JSON.stringify(columns)
     });
 }
 
 export function deleteVehicle(id) {
-    return service.delete(`${moduleURI}/${id}`);
+    return service.delete(`/${moduleURI}/${id}`);
 }
 
 export function createVehicle(attributes) {

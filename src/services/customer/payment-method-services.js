@@ -16,11 +16,11 @@ export function getPaymentMethods(params) {
 }
 
 export function showPaymentMethod(id, columns = ['id']) {
-    return service.get(`${moduleURI}/${id}`, {
+    return service.get(`/${moduleURI}/${id}`, {
         columns: typeof columns === 'string' ? columns : JSON.stringify(columns)
     });
 }
 
 export function deletePaymentMethod(id) {
-    return service.delete(`${moduleURI}/${id}`);
+    return service.delete(`/${moduleURI}/${id}`);
 }

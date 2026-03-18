@@ -4,7 +4,7 @@
         v-model="item" 
         :name="props.name" 
         optionValue="id" 
-        optionLabel=""
+        :optionLabel="props.optionLabel"
 
         filter autoFilterFocus resetFilterOnHide class="w-full" 
         filterPlaceholder="Search more options"
@@ -66,12 +66,13 @@ import {debounce} from 'lodash';
 const emit = defineEmits(['add-new']);
 
 // THIS DROPDOWN WORKS TO ONLY CHOOSE ID
-const item = defineModel({type: [Number, null], required: true});
+const item = defineModel({type: [Number, String, null], required: true});
 
 const props = defineProps({
     // DROPDOWN
     id: {type: String, default: () => 'id'},
     name: {type: String, default: () => 'option'},
+    optionLabel: {type: [String, Function], default: () => 'name'},
 
     // FOR SERVICE
     service: {type: Function, required: true},

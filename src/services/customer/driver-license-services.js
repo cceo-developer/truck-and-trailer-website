@@ -16,13 +16,13 @@ export function getDriverLicenses(params) {
 }
 
 export function showDriverLicense(id, columns = ['id']) {
-    return service.get(`${moduleURI}/${id}`, {
+    return service.get(`/${moduleURI}/${id}`, {
         columns: typeof columns === 'string' ? columns : JSON.stringify(columns)
     });
 }
 
 export function deleteDriverLicense(id) {
-    return service.delete(`${moduleURI}/${id}`);
+    return service.delete(`/${moduleURI}/${id}`);
 }
 
 export function createDriverLicense(attributes) {

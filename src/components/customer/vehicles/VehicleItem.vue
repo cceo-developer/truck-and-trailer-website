@@ -49,7 +49,7 @@
 <script setup>
 import image from "@/assets/images/trailer.jpg";
 
-const emit = defineEmits('view-details');
+const emit = defineEmits(['view-details']);
 
 const props = defineProps({
     vehicle: {type: Object, required: true}
