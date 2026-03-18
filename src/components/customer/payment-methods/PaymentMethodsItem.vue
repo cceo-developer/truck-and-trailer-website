@@ -57,11 +57,13 @@
         
         <!-- Hover actions overlay -->
         <div class="absolute inset-0 bg-white/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 gap-3 z-20">
-            <button type="button" class="flex-1 bg-white border border-zinc-200 text-zinc-700 py-3 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 font-medium transition-colors flex items-center justify-center gap-2">
-                <i class="fa-regular fa-pen-to-square"></i> Edit
-            </button>
-            <button type="button" class="bg-red-50 text-red-600 border border-red-100 p-3 rounded-xl hover:bg-red-100 hover:border-red-200 transition-colors w-12 flex items-center justify-center">
-                <i class="fa-regular fa-trash-can"></i>
+            <button 
+                type="button" class="bg-red-50 text-red-600 border border-red-100 p-3 rounded-xl hover:bg-red-100 hover:border-red-200 transition-colors w-[6rem] flex items-center justify-center"
+                @click="emit('delete-payment-method', props.paymentMethod.id)">
+                <div class="flex items-center gap-x-2">
+                    Delete
+                    <i class="fa-regular fa-trash-can"></i>
+                </div> 
             </button>
         </div>
     </div>
@@ -75,6 +77,8 @@ import discoverLogo from '@/assets/images/cards/discover_logo.png';
 import mastercardLogo from '@/assets/images/cards/mastercard_logo.png';
 import unionpayLogo from '@/assets/images/cards/union_pay_logo.png';
 import visaLogo from '@/assets/images/cards/visa_logo.png';
+
+const emit = defineEmits(['delete-payment-method']);
 
 const props = defineProps({
     paymentMethod: { type: Object, required: true }

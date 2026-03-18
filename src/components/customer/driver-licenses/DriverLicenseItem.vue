@@ -56,7 +56,7 @@
             </div>
 
             <div class="flex justify-end mt-auto">
-                <button type="button" class="border border-primary-400 p-2.5 px-5 rounded-lg text-primary-500 hover:bg-primary-500 hover:text-white hover:font-bold text-sm transition-all duration-200 w-full md:w-auto">
+                <button @click="$emit('view-details', props.driverLicense.id)" type="button" class="border border-primary-400 p-2.5 px-5 rounded-lg text-primary-500 hover:bg-primary-500 hover:text-white hover:font-bold text-sm transition-all duration-200 w-full md:w-auto">
                     <div class="flex items-center justify-center gap-x-2">
                         <div>View details</div>
                         <div>
@@ -75,6 +75,8 @@ import { computed } from 'vue';
 const props = defineProps({
     driverLicense: {type: Object, required: true}
 });
+
+defineEmits(['view-details']);
 
 const tagStatus = computed(() => {
     if (!props.driverLicense.expiration_date) return 'none';

@@ -16,19 +16,25 @@ export function getDriverLicenses(params) {
 }
 
 export function showDriverLicense(id, columns = ['id']) {
-    return service.get(`${moduleURI}/${id}`, {
+    return service.get(`/${moduleURI}/${id}`, {
         columns: typeof columns === 'string' ? columns : JSON.stringify(columns)
     });
 }
 
 export function deleteDriverLicense(id) {
-    return service.delete(`${moduleURI}/${id}`);
+    return service.delete(`/${moduleURI}/${id}`);
 }
 
 export function createDriverLicense(attributes) {
-    return service.post(`/${moduleURI}`, attributes);
+    return service.post(`/${moduleURI}`, attributes, { headers: { "Content-Type": "multipart/form-data" } });
 }
 
 export function updateDriverLicense(id, attributes) {
     return service.put(`/${moduleURI}/${id}`, attributes);
+}
+
+export function analyzeDriverLicense(image) {
+    return service.post(`/${moduleURI}/analyze`, {
+        image_to_be_analyzed: image
+    }, { headers: { "Content-Type": "multipart/form-data" } });
 }

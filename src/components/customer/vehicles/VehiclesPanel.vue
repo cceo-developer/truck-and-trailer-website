@@ -15,7 +15,7 @@
             <template v-if="items.length > 0">
                 <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
                     <template v-for="(vehicle, index) in items" :key="`vehicle_${index}`">
-                        <VehicleItem :vehicle="vehicle" />
+                        <VehicleItem :vehicle="vehicle" @view-details="$id => modal.showRecord($id)" />
                     </template>
                 </div>
                 <div class="w-full pt-1 border-t border-zinc-300">
@@ -31,10 +31,17 @@
                 <div class="flex flex-col items-center">
                     <img :src="image" alt="Trailer" class="w-[20rem] opacity-60" />
                     <div class="text-zinc-600 text-lg">No information has been recorded</div>
+                    <div class="pt-10">
+                        <SecondaryButton @click="() => modal.showStore()">
+                            <i class="fa-solid fa-plus"></i>
+                            add your first vehicle to get started
+                        </SecondaryButton>
+                    </div>
                 </div>
             </template>
         </div>
     </div>
+    <VehiclesModal ref="modal" @done="load()" />
 </template>
 
 <script setup>
@@ -44,6 +51,9 @@ import useCollection from '@/composables/useCollection.js';
 import { getVehicles } from '@/services/customer/vehicle-services.js';
 import VehicleItem from '@/components/customer/vehicles/VehicleItem.vue';
 import SearchInput from '@/components/widgets/widgets/SearchInput.vue';
+import VehiclesModal from '@/components/customer/vehicles/VehiclesModal.vue';
+
+const modal = ref(null);
 
 const search = ref(null);
 
@@ -85,4 +95,10 @@ const handleSearch = async (filter) => {
     setFilter('search', {value: filter});
     await load();
 };
+
+const openModal = () => {
+    modal.value.showStore();
+}
+
+defineExpose({ openModal });
 </script>

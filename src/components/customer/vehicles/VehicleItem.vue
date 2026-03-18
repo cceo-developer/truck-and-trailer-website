@@ -31,7 +31,9 @@
                 </div>
             </div>
             <div class="flex justify-end">
-                <button type="button" class="border border-primary-400 p-3 rounded-lg text-primary-500 hover:bg-primary-500 hover:text-white hover:font-bold">
+                <button 
+                    type="button" class="border border-primary-400 p-3 rounded-lg text-primary-500 hover:bg-primary-500 hover:text-white hover:font-bold"
+                    @click="emit('view-details', props.vehicle.id)">
                     <div class="flex items-center gap-x-2">
                         <div>View details</div>
                         <div>
@@ -46,6 +48,8 @@
 
 <script setup>
 import image from "@/assets/images/trailer.jpg";
+
+const emit = defineEmits(['view-details']);
 
 const props = defineProps({
     vehicle: {type: Object, required: true}
