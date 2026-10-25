@@ -16,10 +16,30 @@ jobs:
   review:
     uses: antongulin/robin/.github/workflows/review.yml@main
     with:
+      # Review behavior
       max-diff-size: "25000"
       max-comments: "10"
       fail-on-high: false
       request-changes: false
+
+      # Reasoning: not supported together with agent mode tools on /v1/chat/completions
+      reasoning-effort: "off"
+
+      # Agentic review
+      agent-mode: auto
+      agent-max-turns: "10"
+      agent-max-diff-size: "100000"
+
+      # Review policies
+      bot-review-policy: none
+      review-instructions-file: ".github/code-reviewer.md"
+      review-instructions: >-
+        Responde siempre en español de México (es-MX).
+        Escribe los resúmenes, comentarios de revisión,
+        hallazgos y recomendaciones en español.
+        Conserva los identificadores y fragmentos de
+        código en su idioma original.
+
     secrets:
       LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
       LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}

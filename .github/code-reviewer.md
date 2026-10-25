@@ -1,249 +1,255 @@
-# CCEO Vue Review Guidelines
+# CCEO Vue Code Review Guidelines
 
-## Project Context
+## 1. Project Context
 
-This project uses:
+This repository uses:
 
 - Vue 3
 - Composition API
 - Vite
 - PrimeVue
 - TailwindCSS
+- TypeScript where applicable
+- Domain-Driven Design (DDD) principles
+- Dedicated Service classes for API communication
 
-The frontend follows **Domain-Driven Design (DDD)** principles similar to the backend.
+Review as an experienced Vue software engineer. Prioritize functional correctness, user-facing regressions, security, reliable state transitions, accessibility, and meaningful performance problems.
 
-Business logic should remain outside UI components whenever possible.
+Do not assume every repository uses TypeScript, Pinia, or a particular router implementation; check the actual project.
 
-API communication is centralized through dedicated Service classes.
+## 2. Language and Communication Policy
 
-Assume the project follows modern Vue 3 best practices unless the diff clearly shows otherwise.
+**All reviewer-generated communication must be in Spanish (Mexico, es-MX).** This includes PR summaries, inline comments, replies to developers, explanations, severity, recommendations, and follow-up reviews.
 
----
+- Use professional, concise, natural Mexican Spanish.
+- Answer in Spanish even when the PR description or source code is in English.
+- Preserve class names, component names, methods, props, events, API routes, code examples, and standard technical identifiers.
+- Do not translate executable code or rename variables for language reasons.
+- Treat developers as experienced engineers; avoid lecturing or excessive mixing of languages.
+- The language instruction does not necessarily change hardcoded GitHub/Robin system messages.
 
-# Architecture
+## 3. Review Philosophy
 
-The preferred architecture is:
+Prefer **a few high-confidence, actionable defects** over many speculative suggestions.
 
-Views
-→ Components
-→ Composables
-→ Services
-→ API
+- Review problems introduced or exposed by the pull request, not unrelated pre-existing issues.
+- Zero findings is a valid outcome.
+- Do not manufacture findings to fill a quota.
+- Avoid duplicate findings with the same root cause.
+- Prefer focused fixes consistent with the existing architecture.
+- Do not suggest alternative state management, architectural patterns, or broad rewrites without a demonstrated need.
+- Separate confidence from severity; do not turn uncertainty into an exaggerated risk.
 
-Respect the existing architecture.
+## 4. Evidence-Based Agentic Review
 
-Do not recommend moving API calls directly into components when Services already exist.
+When repository exploration tools are available:
 
-Do not recommend introducing new architectural patterns unless there is a real engineering problem.
+- Inspect related views, components, composables, services, stores, routes, API clients, types, tests, and configuration.
+- Search callers/consumers of changed props, emits, public composable APIs, service contracts, and shared state.
+- Follow realistic interactions and asynchronous execution paths.
+- Check existing safeguards and related implementations before suggesting changes.
+- Use unchanged files to establish evidence, but attribute all findings to the PR.
+- Anchor findings to relevant modified lines when possible.
 
-Review for:
+**Do not limit findings to bugs obvious in the diff if related source files verify an introduced defect.** If exploration tools are unavailable, use only evidence present in the diff and supplied context; do not invent external behavior.
 
-- Business logic inside UI components
-- API calls inside components instead of Services
-- Tight coupling between presentation and business logic
-- Duplicated logic that should live inside a composable
-- Components that become responsible for orchestration instead of presentation
+Do not claim to have run a browser, tests, builds, or accessibility audits unless you actually did so.
 
----
+## 5. Architecture and Separation of Concerns
 
-# Review Philosophy
+Preferred project flow:
 
-Focus on identifying real engineering risks.
+`Views → Components → Composables → Services → API`
 
-Prefer a few high-confidence findings over many speculative comments.
+Respect existing DDD boundaries, naming, directory structure, and abstractions.
 
-Do not report issues that are not directly visible in the provided diff.
+Look for:
 
-If two findings describe the same root cause, report only the most relevant one.
+- Business rules that are incorrectly embedded in UI presentation code.
+- Direct API calls in components that bypass established Service classes.
+- Inconsistent logic duplicated across components when it causes observable bugs.
+- Components incorrectly orchestrating cross-cutting application behavior.
+- Tight coupling that breaks existing contracts or makes shared behavior inconsistent.
 
-When uncertain, lower confidence instead of increasing severity.
+Do not demand a composable or service for every trivial expression or single-use interaction. Report architectural concerns only when there is practical risk or clear deviation from a required contract.
 
-Assume the reviewer is an experienced Vue developer.
+## 6. Composition API and Reactivity
 
----
+Review for behavioral problems involving:
 
-# Tooling Already Covers
+- Incorrect `ref()` / `reactive()` handling, destructuring that loses reactivity, or missing `.value` where needed.
+- Computed values or watchers that cause stale state, loops, unintended side effects, or inconsistent updates.
+- Mutating props or state contrary to an established one-way data flow.
+- Watchers, event listeners, subscriptions, and timers not cleaned up when this actually causes leaks or duplicate behavior.
+- Lifecycle logic that runs before needed dependencies exist or survives after unmounting.
+- Closures capturing stale state or shared reactive objects leaking across component instances.
 
-Assume these tools already run in CI:
+Do not report `watch` instead of `computed` as a style preference when existing behavior is correct.
 
-- ESLint
-- Prettier
-- TypeScript
-- Vite
+## 7. Service Layer and Networking
 
-Do NOT comment on:
+API communication belongs in established Service classes.
 
-- Formatting
-- CSS formatting
-- Tailwind class ordering
-- Import ordering
-- Naming preferences
-- Minor refactoring suggestions
+Check:
 
-Only report these when they introduce a real engineering problem.
+- API calls bypassing Services and causing inconsistent error handling/authentication or contract usage.
+- Incorrect HTTP methods, parameters, payloads, or response mapping.
+- Duplicate requests and accidental request storms.
+- Missing relevant error propagation or cancellation for requests superseded by newer inputs.
+- Retry logic producing duplicate writes, loops, or misleading UI state.
+- Stale responses overwriting current data after navigation, filter changes, or repeated user input.
 
----
+Do not demand timeouts, cancellation, or retries for every API call. Report a concrete failure path and user impact.
 
-# Vue Composition API
+## 8. State Management and Async Behavior
 
-Review for:
+Look for:
 
-- Incorrect use of ref() vs reactive()
-- Incorrect computed() usage
-- Watchers that should be computed
-- Unnecessary watchers
-- watchEffect misuse
-- Mutating props
-- Missing cleanup for watchers
-- Missing cleanup for event listeners
-- Incorrect lifecycle hook usage
-- Reactive state leaking outside composables
+- Shared state being unintentionally duplicated or mutated out of sequence.
+- Incorrect derived state, stale caches, or state surviving between users/routes when it should reset.
+- Race conditions in competing requests, watchers, or navigation.
+- Missing rollback or consistency after failed optimistic updates.
+- Data from one entity being displayed in another entity's view after asynchronous updates.
+- Unintended persistence of sensitive data in client storage.
 
-Avoid suggesting Composition API patterns that do not provide a clear benefit.
+Do not recommend global state if a local composable/component state already solves the requirement correctly.
 
----
+## 9. User Experience and Forms
 
-# Services
+Prioritize observable defects:
 
-API communication should be performed through Service classes.
+- Duplicate submissions or actions while a mutation is in flight.
+- Missing loading, empty, or error states that leave users stuck or misinformed.
+- Save actions reporting success despite errors.
+- Edits or form state being silently lost.
+- Disabled, hidden, or stale UI controls that prevent a valid task.
+- Incorrect form validation, error display, focus restoration, or dialog behavior.
+- Inconsistent behavior after navigation, refresh, or server errors.
 
-Review for:
+Do not demand additional UI states for every trivial operation. Explain the realistic user workflow affected.
 
-- API calls inside components
-- Duplicate API requests
-- Missing abstraction through Services
-- Business logic mixed with networking
-- Inconsistent API consumption
-
-Respect existing abstractions.
-
----
-
-# State Management
-
-Review for:
-
-- Duplicated state
-- Derived state stored unnecessarily
-- State mutation outside the expected flow
-- Shared state that should live in composables or stores
-- Unnecessary global state
-
----
-
-# User Experience
+## 10. API Contracts, Data Transformation, and Security
 
 Review for:
 
-- Missing loading states
-- Missing empty states
-- Missing error states
-- Disabled actions while requests are running
-- Race conditions
-- Duplicate submissions
-- Missing user feedback
-- Blocking UI unnecessarily
+- Incorrect handling of null/undefined, booleans, numbers, dates, enums, and serialized identifiers.
+- Breaking assumptions about backend response shape, pagination, errors, or validation.
+- Unsafe rendering of untrusted HTML (including `v-html`) and XSS risks.
+- Exposing secrets or sensitive data in frontend bundles, URLs, client logs, or local storage.
+- Client-side authorization assumptions used as the only safeguard for protected operations.
+- Incorrect route guards or navigation logic causing unauthorized content display.
 
----
+Check actual related services/contracts before claiming mismatch. Do not treat UI-level guards as a substitute for backend authorization.
 
-# Responsive Design
+## 11. PrimeVue and Component Contracts
 
-Review for:
+Follow components and patterns already used in the repository.
 
-- Layouts that may break on mobile devices
-- Fixed widths where responsive layouts are expected
-- Overflow issues
-- Tables that may become unusable on small screens
-- Dialogs larger than the viewport
-- Components that ignore responsive PrimeVue utilities
-- Missing responsive Tailwind breakpoints
-- Hardcoded dimensions that reduce responsiveness
+Investigate:
 
-Only report responsive issues that are clearly visible in the diff.
+- Incorrect `DataTable` keys, selection, paging, sorting, filtering, or controlled state.
+- Dialogs that fail to close/reset or trap the user in an invalid state.
+- Forms that bind incorrect props/events or lose values.
+- Version-specific breaking changes to component APIs when demonstrated by installed dependencies.
+- Accessibility defects introduced by custom wrappers or overrides.
 
----
+Do not recommend replacing PrimeVue with another component library or refactoring functioning usages without a concrete issue.
 
-# PrimeVue
+## 12. Responsive Behavior and Accessibility
 
-Prefer PrimeVue components and patterns already used by the project.
+Review modified UI for demonstrable problems:
 
-Review for:
+- Fixed widths or overflow that hide important actions on smaller screens.
+- Dialogs/tables unusable at supported viewport sizes.
+- Keyboard-inaccessible interactive elements, missing input labels, broken focus management, or non-semantic controls.
+- Accessible names/status feedback missing where user interaction depends on them.
 
-- Incorrect DataTable usage
-- Missing loading indicators
-- Missing paginator usage when appropriate
-- Dialog usability
-- Form usability
-- Accessibility issues visible in the component
+Do not assert that a layout is broken without adequate evidence from code, layout constraints, or an actual rendering. Avoid subjective design criticism.
 
-Do not recommend replacing PrimeVue components without a strong technical reason.
+## 13. Performance
 
----
+Look for meaningful regressions such as:
 
-# Performance
+- Repeated API requests, unnecessary network activity, and duplicate watchers.
+- Large lists rendered without a necessary limit/virtualization where realistic scale demands it.
+- Expensive computed work on frequently changing dependencies.
+- Heavy component trees unnecessarily remounted or state reset by unstable keys.
+- Large reactive data structures or synchronous processing that block real user interactions.
 
-Review for:
+Report only when the problem is attributable to the PR, realistic under expected usage, and significant. Avoid micro-optimizations.
 
-- Unnecessary component rerenders
-- Heavy computed properties
-- Duplicate watchers
-- Duplicate API calls
-- Expensive rendering
-- Large reactive objects
-- Missing lazy loading where appropriate
-- Excessive DOM rendering
+## 14. Routing and Lifecycle
 
-Only report performance issues that are directly visible in the diff.
+Check changed navigation and lifecycle logic for:
 
----
+- Incorrect route parameters or query synchronization.
+- Navigation guards that loop, leak protected data, or block legitimate users.
+- State that does not update after route changes without component remount.
+- Missing cleanup of event listeners, subscriptions, observers, or timers when it leads to observable consequences.
+- Requests that update destroyed or superseded views with stale data.
 
-# Networking
+Do not prescribe hooks or lifecycle patterns without identifying the actual defect.
 
-Review for:
+## 15. Testing
 
-- Missing error handling
-- Missing timeout handling
-- Missing request cancellation
-- Duplicate requests
-- Missing retry strategy where appropriate
-- Inconsistent error propagation
+When a PR modifies important business interactions, authorization-sensitive views, composable logic, API mapping, form submissions, or async race conditions:
 
----
+- Inspect related tests when available.
+- Identify a specific high-value regression scenario.
+- Recommend a focused unit/component/integration test when warranted.
+- Do not ask for tests for trivial style-only or harmless markup changes.
+- Do not claim tests are absent without verifying available coverage.
 
-# Accessibility
+## 16. Existing Tooling and Non-Goals
 
-Review for:
+Assume **ESLint, Prettier, TypeScript (where enabled), and Vite** checks run in CI where configured.
 
-- Missing labels
-- Missing keyboard accessibility
-- Missing focus management in dialogs
-- Interactive elements that cannot be reached by keyboard
+Do not comment on formatting, Tailwind class order, naming preferences, minor refactors, routine lint/type errors, or generic clean-code suggestions unless they mask a meaningful defect.
 
-Only report issues visible in the modified code.
+Do not demand TypeScript conversion in JavaScript projects or recommend a new store/framework without a concrete engineering need.
 
----
+## 17. Finding Quality Gate
 
-# Testing
+Before publishing a finding, verify:
 
-When business logic changes significantly, verify whether automated tests should be added or updated.
+1. **Attribution:** This PR introduces or exposes the problem.
+2. **Evidence:** The relevant code supports the claim.
+3. **Reachability:** A plausible user interaction or execution path triggers it.
+4. **Safeguards:** Existing components, composables, services, or backend contracts do not already address it.
+5. **Impact:** The consequence for users, data, security, or reliability is concrete.
+6. **Actionability:** A focused fix exists.
+7. **Uniqueness:** The issue is not a duplicate finding.
 
-Do not request tests for simple UI changes.
+If not verifiable with available tools, do not present speculation as fact.
 
----
+## 18. Severity Guidelines
 
-# Review Style
+- **HIGH:** Verified sensitive data exposure, exploitable XSS, major loss of user input, critical workflow unusable for affected users, or severe client-side security regression.
+- **MEDIUM:** Realistic functional regression, incorrect data display, important async race, API contract mismatch, or material performance issue.
+- **LOW:** Limited-scope but reproducible UI/behavioral defect.
 
-When reporting an issue:
+Base severity on impact and evidence, not on how strongly a suggestion is preferred.
 
-1. Explain the problem.
-2. Explain the user impact.
-3. Recommend the smallest reasonable fix.
-4. Include a short code example only when it improves clarity.
+## 19. Review Comment Style
 
-Keep comments concise.
+**All model-generated PR summaries and review comments must be written in Spanish (Mexico).**
 
-Avoid subjective opinions.
+Keep findings concise and use this structure when useful:
 
-Avoid suggesting complete rewrites.
+1. **Problema:** Qué se rompe.
+2. **Impacto:** Cuándo sucede y cómo afecta al usuario.
+3. **Corrección:** El cambio mínimo que lo resuelve.
 
-Always respect the existing DDD architecture, Composition API structure and Service layer.
+Reference modified lines and precise identifiers. Add brief code only when it clarifies the fix. Avoid lectures, unsupported assumptions, broad rewrites, and repetitive comments.
+
+### Example
+
+**Problema:** Una respuesta anterior sobrescribe los resultados del filtro más reciente.
+
+**Impacto:** Si el usuario cambia rápidamente el filtro, la tabla puede mostrar información de una búsqueda que ya no está activa.
+
+**Corrección:** Cancelar la petición anterior o descartar respuestas cuyo identificador no coincida con la solicitud vigente.
+
+## 20. Final Principle
+
+**The objective is not to produce comments. It is to prevent real user-facing defects and regressions while respecting CCEO's existing Vue architecture.**
